@@ -1,14 +1,16 @@
 package main;
 
 import model.Image;
-import vue.FenetrePrincipale;
 
 public class Application {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		
+		System.out.println("100/100");
 
-		FenetrePrincipale fenetrePrincipale = new FenetrePrincipale() ;
+		String TestedImagePathRelative = "modelTest\\TestedImage.png" ; 
+		Image img = new Image(TestedImagePathRelative);
 		
 	}
 
