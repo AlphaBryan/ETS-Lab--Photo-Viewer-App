@@ -10,7 +10,7 @@ import javax.swing.JMenuItem;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
 
-import modele.UtilitaireFichierXML;
+
 
 public class Toolbar extends JMenuBar {
 
