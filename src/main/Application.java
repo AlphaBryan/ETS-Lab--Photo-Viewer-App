@@ -7,9 +7,9 @@ public class Application {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		System.out.println("100/100");
+		System.out.println("Test");
 
-		String TestedImagePathRelative = "modelTest\\TestedImage.png" ; 
+		String TestedImagePathRelative = "C:\\Users\\elwin\\OneDrive\\Images" ; 
 		Image img = new Image(TestedImagePathRelative);
 		
 	}
