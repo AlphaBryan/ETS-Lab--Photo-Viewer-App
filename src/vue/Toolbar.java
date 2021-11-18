@@ -10,8 +10,6 @@ import javax.swing.JMenuItem;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
 
-import modele.UtilitaireFichierXML;
-
 public class Toolbar extends JMenuBar {
 
 	private static final long serialVersionUID = 1L;
