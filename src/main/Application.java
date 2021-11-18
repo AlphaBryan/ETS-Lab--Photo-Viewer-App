@@ -1,6 +1,6 @@
 package main;
 
-import model.Image;
+import model.Images;
 
 public class Application {
 
@@ -10,7 +10,7 @@ public class Application {
 		System.out.println("100/100");
 
 		String TestedImagePathRelative = "modelTest\\TestedImage.png" ; 
-		Image img = new Image(TestedImagePathRelative);
+		Images img = new Images(TestedImagePathRelative);
 		
 	}
 
