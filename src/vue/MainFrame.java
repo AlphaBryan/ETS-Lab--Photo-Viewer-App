@@ -7,13 +7,13 @@ import java.beans.PropertyChangeListener;
 
 import javax.swing.JFrame;
 
-public class FenetrePrincipale extends JFrame implements PropertyChangeListener {
+public class MainFrame extends JFrame implements PropertyChangeListener {
 
 	private static final long serialVersionUID = 1L;
 	private static final String TITRE_FENETRE = "Laboratoire 3 : LOG121 - Image";
 	private static final Dimension DIMENSION = new Dimension(700, 700);
 
-	public FenetrePrincipale() {
+	public MainFrame() {
 		MainPanel panneauPrincipal = new MainPanel();
 		Toolbar toolbar = new Toolbar();
 		add(panneauPrincipal);

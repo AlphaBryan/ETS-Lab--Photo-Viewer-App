@@ -4,12 +4,12 @@ package vue;
 import javax.swing.*;
 import java.awt.*;
 
-public class PanneauTranslation  extends JPanel {
+public class PanelTranslation  extends JPanel {
     /**
      *
      */
 
-    public PanneauTranslation(){
+    public PanelTranslation(){
 
     }
     @Override
@@ -25,4 +25,5 @@ public class PanneauTranslation  extends JPanel {
     public Point getMousePosition()  {
         return super.getMousePosition();
     }
+    
 }
