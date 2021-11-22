@@ -45,6 +45,6 @@ public class MainFrame extends JFrame  {
 	public void setUpCommandToolbar(){
 		toolbar.setAction(save);
 		toolbar.setAction(charge);
-
+		toolbar.setUndo();
 	}
 }

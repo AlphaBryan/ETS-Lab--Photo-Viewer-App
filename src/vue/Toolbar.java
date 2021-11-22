@@ -38,9 +38,7 @@ public class Toolbar extends JMenuBar {
 		fichier.add(charger) ;
 		fichier.add(sauvegarder) ;
 		add(fichier);
-
 		ajouterMenuFichier();
-		ajouterCommand();
 
 
 	}
@@ -72,7 +70,7 @@ public class Toolbar extends JMenuBar {
 
 	}
 
-	private void ajouterCommand() {
+	public void setUndo() {
 
 		undo.addActionListener((ActionEvent e) -> {
 			/**
