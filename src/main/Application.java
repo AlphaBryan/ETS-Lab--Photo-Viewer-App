@@ -1,14 +1,15 @@
 package main;
 
-import controlleur.CommandGestion;
+import controlleur.*;
 import vue.MainFrame;
 
 public class Application {
 
+
 	/*
 	 * TODO - Bryan required Help
 	 * Ask1 : L'application ne peut pas etre le client car elle ne crée pas les boutons et ne les connaits pas
-	 * donc comment et ou faire des setsCommand ?
+	 * donc comment et ou faire des setsCommand ?w
 	 * 
 	 * le client c'est surement MainFrame ?
 	 * avec des setsCommandRecursif jusqu'aux sub-panels et toolbar ? 
@@ -16,8 +17,7 @@ public class Application {
 	 * Ask2 : by the way, a quelle moment on utilise commandGestion Here
 	 **/
 	
-	
-	CommandGestion commandGestion =  CommandGestion.getInstance() ; 
+
 
 	public static void main(String[] args) {
 		AppInfo() ;
@@ -29,10 +29,7 @@ public class Application {
 	 */
 	public static void run() {
 		System.out.println("• Lauching Application...");
-		MainFrame mainFrame = new MainFrame();  
-		Environnement environnement = new Environnement();
-		environnement.addPropertyChangeListener(mainFrame);
-		environnement.execute();
+		MainFrame mainFrame = new MainFrame();
 		System.out.println("• Application Launched \n");
 	}
 	
@@ -47,27 +44,7 @@ public class Application {
 		System.out.println( " - Mevo Bryan" );
 		System.out.println( "" );
 	}
-	
-	/**
-	 * Methode permettant : d'attribuer une commande de Chargement 
-	 */
-	public void setChargeCommand() {
-		// TODO
-	}
-	
-	/**
-	 * Methode permettant : d'attribuer une commande de Translation
-	 */
-	public void setTranslationCommand() {
-		// TODO
-	}
-	
-	/**
-	 * Methode permettant : d'attribuer une commande de Zoom
-	 */
-	public void setZoomCommand() {
-		// TODO
-	}
+
 
 
 }

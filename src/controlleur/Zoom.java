@@ -12,7 +12,8 @@ public class Zoom extends Command {
 	**/
 	@Override
 	public void execute() {
-		System.out.println("# Command Zoom execution");
+		commandGestion.zoom();
+		commandGestion.push(this);
 	}
 
 }

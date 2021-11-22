@@ -8,7 +8,7 @@ import vue.MainPanel;
 public class CommandGestion {
 	
 	private static CommandGestion commandGestion ; 
-	private Deque<Command> savedCommands;
+	private static Deque<Command> savedCommands;
 
 	
 	/**
@@ -58,24 +58,26 @@ public class CommandGestion {
 	/**
 	 * Methode pour executer la commande Charge
 	 **/
-	public void executeCharge() {
-		Charge c = new Charge() ; // Not sure of that 
-		c.execute();
+	public void charge() {
+		System.out.println("CHARGED");
 	}
 	
 	/**
 	 * Methode pour executer la commande Zoom
 	 **/
-	public void executeZoom() {
-		Zoom z = new Zoom() ; 
-		z.execute() ; 
+	public void zoom() {
+
 	}
 	
 	/**
 	 * Methode pour executer la commande Translation
 	 **/
-	public void executeTranslation() {
+	public void translation() {
 		
+	}
+
+	public void save() {
+		System.out.println("SAVED");
 	}
 	 
 }

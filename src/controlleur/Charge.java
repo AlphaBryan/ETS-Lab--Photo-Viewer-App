@@ -13,6 +13,7 @@ public class Charge  extends Command{
 	**/
 	@Override
 	public void execute() {
-		System.out.println("# Command Charge execution");
+		commandGestion.charge();
+		commandGestion.push(this);
 	}
 }

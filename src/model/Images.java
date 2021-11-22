@@ -11,7 +11,7 @@ public class Images {
 	
 	/**
 	 * Construteur de la classe Images.java
-	 * @param XXX : ___
+	 *
 	 */
 	public Images(String path) {
 		super();

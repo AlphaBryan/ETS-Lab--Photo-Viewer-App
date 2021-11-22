@@ -1,5 +1,9 @@
 package vue;
 
+import controlleur.Charge;
+import controlleur.Command;
+import controlleur.Save;
+
 import java.awt.event.ActionEvent;
 import java.io.File;
 
@@ -21,8 +25,20 @@ public class Toolbar extends JMenuBar {
 	private static final String TOOLBAR_UNDO = "Undo";
 
 
+	private JMenu fichier = new JMenu(TOOLBAR_TITRE_FICHIER);
+	private JMenuItem nouvelleImage = new JMenuItem(TOOLBAR_NOUVELLEIMAGE);
+	private JMenuItem sauvegarder = new JMenuItem(TOOLBAR_SAUVEGARDER);
+	private JMenuItem charger = new JMenuItem(TOOLBAR_CHARGER_FICHIER);
+
+	private JMenu command =  new JMenu(TOOLBAR_COMMAND);
+	private JMenuItem undo = new JMenuItem(TOOLBAR_UNDO);
 
 	public Toolbar() {
+		fichier.add(nouvelleImage);
+		fichier.add(charger) ;
+		fichier.add(sauvegarder) ;
+		add(fichier);
+
 		ajouterMenuFichier();
 		ajouterCommand();
 
@@ -33,11 +49,6 @@ public class Toolbar extends JMenuBar {
 	 * Cr�er le menu de Fichier
 	 */
 	private void ajouterMenuFichier() {
-		JMenu fichier = new JMenu(TOOLBAR_TITRE_FICHIER);
-		JMenuItem nouvelleImage = new JMenuItem(TOOLBAR_NOUVELLEIMAGE);
-		JMenuItem sauvegarder = new JMenuItem(TOOLBAR_SAUVEGARDER);
-		JMenuItem charger = new JMenuItem(TOOLBAR_CHARGER_FICHIER);
-
 
 		nouvelleImage.addActionListener((ActionEvent e) -> {
 			JFileChooser fileChooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
@@ -57,30 +68,12 @@ public class Toolbar extends JMenuBar {
 				System.out.println(selectedFile.getAbsolutePath());
 			}
 		});
-		fichier.add(nouvelleImage);
 
-		charger.addActionListener((ActionEvent e) -> {
-			/**
-			 * to do
-			 */
-		});
-		fichier.add(charger) ;
-
-		sauvegarder.addActionListener((ActionEvent e) -> {
-			/**
-			 * to do
-			 */
-		});
-		fichier.add(sauvegarder) ;
-
-
-		add(fichier);
 
 	}
 
 	private void ajouterCommand() {
-		JMenu command =  new JMenu(TOOLBAR_COMMAND);
-		JMenuItem undo = new JMenuItem(TOOLBAR_UNDO);
+
 		undo.addActionListener((ActionEvent e) -> {
 			/**
 			 * to do
@@ -92,5 +85,17 @@ public class Toolbar extends JMenuBar {
 	}
 
 
+
+
+	public void setAction(Charge command){
+		charger.addActionListener((ActionEvent e) -> {
+			command.execute();
+		});
+	}
+	public void setAction(Save command){
+		sauvegarder.addActionListener((ActionEvent e) -> {
+			command.execute();
+		});
+	}
 
 }
