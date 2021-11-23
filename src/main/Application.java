@@ -17,7 +17,9 @@ public class Application {
 	 **/
 	
 	
-	CommandGestion commandGestion =  CommandGestion.getInstance() ; 
+	
+	private static MainFrame mainFrame ; 
+	private CommandGestion commandGestion =  CommandGestion.getInstance() ; 
 
 	public static void main(String[] args) {
 		AppInfo() ;
@@ -29,7 +31,7 @@ public class Application {
 	 */
 	public static void run() {
 		System.out.println("• Lauching Application...");
-		MainFrame mainFrame = new MainFrame();  
+		mainFrame = new MainFrame();  
 		Environnement environnement = new Environnement();
 		environnement.addPropertyChangeListener(mainFrame);
 		environnement.execute();
@@ -69,5 +71,20 @@ public class Application {
 		// TODO
 	}
 
+	/** Getter de l'attribut : MainFrame
+	 * @return MainFrame : Instance de l'attribut this.mainFrame
+	 */
+	public static MainFrame getMainFrame() {
+		return mainFrame;
+	}
 
+	/** Setter de l'attribtut : this.mainFrame
+	 * @param mainFrame : Nouvelle valeur de l'attribut this.mainFrame 
+	 */
+	public static void setMainFrame(MainFrame mainFrame) {
+		Application.mainFrame = mainFrame;
+	}
+
+
+	
 }

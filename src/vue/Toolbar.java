@@ -10,6 +10,8 @@ import javax.swing.JMenuItem;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
 
+import main.Application;
+
 public class Toolbar extends JMenuBar {
 
 	private static final long serialVersionUID = 1L;
@@ -30,7 +32,12 @@ public class Toolbar extends JMenuBar {
 	}
 
 	/**
-	 * Crï¿½er le menu de Fichier
+	 * TODO : 
+	 *  Reparer nouvelle image qui stop le programme 
+	 * 	Mettre nouvelle image dans une commande 
+	 * */
+	/**
+	 * Creer le menu de Fichier
 	 */
 	private void ajouterMenuFichier() {
 		JMenu fichier = new JMenu(TOOLBAR_TITRE_FICHIER);
@@ -39,11 +46,12 @@ public class Toolbar extends JMenuBar {
 		JMenuItem charger = new JMenuItem(TOOLBAR_CHARGER_FICHIER);
 
 
-		nouvelleImage.addActionListener((ActionEvent e) -> {
+	
+		nouvelleImage.addActionListener((ActionEvent e) -> {  
 			JFileChooser fileChooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
 			fileChooser.setDialogTitle("Sï¿½lectionnez une  image  : ");
 			fileChooser.setAcceptAllFileFilterUsed(false);
-			// Crï¿½er un filtre
+			// Creer un filtre
 			FileNameExtensionFilter filtre = new FileNameExtensionFilter(".png", "png");
 			fileChooser.addChoosableFileFilter(filtre);
 
@@ -54,21 +62,24 @@ public class Toolbar extends JMenuBar {
 				
 				File selectedFile = fileChooser.getSelectedFile();
 				
-				System.out.println(selectedFile.getAbsolutePath());
+				System.out.println(selectedFile.getAbsolutePath()); // TODO : CA STOP LE PROGRAMME 
+				System.out.println("test");
+				
+				// InitPanelsImages(selectedFile.getAbsolutePath()) ;
 			}
 		});
 		fichier.add(nouvelleImage);
 
 		charger.addActionListener((ActionEvent e) -> {
 			/**
-			 * to do
+			 * TODO
 			 */
 		});
 		fichier.add(charger) ;
 
 		sauvegarder.addActionListener((ActionEvent e) -> {
 			/**
-			 * to do
+			 * TODO
 			 */
 		});
 		fichier.add(sauvegarder) ;
@@ -83,14 +94,20 @@ public class Toolbar extends JMenuBar {
 		JMenuItem undo = new JMenuItem(TOOLBAR_UNDO);
 		undo.addActionListener((ActionEvent e) -> {
 			/**
-			 * to do
+			 * TODO
 			 */
 		});
 		command.add(undo) ;
-
 		add(command);
 	}
 
+	
+	private void InitPanelsImages(String path) {
+		System.out.println("• Loading Image : " + path);
+		Application.getMainFrame().setImgPath(path);
+		System.out.println("• Image succesfully Loaded ");
+
+	}
 
 
 }

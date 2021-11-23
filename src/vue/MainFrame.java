@@ -12,21 +12,25 @@ public class MainFrame extends JFrame implements PropertyChangeListener {
 	private static final long serialVersionUID = 1L;
 	private static final String TITRE_FENETRE = "Laboratoire 3 : LOG121 - Image";
 	private static final Dimension DIMENSION = new Dimension(700, 700);
+	
+	private String ImgPath = " "; 
+	public static MainPanel panneauPrincipal ;
+
 
 	public MainFrame() {
-		MainPanel panneauPrincipal = new MainPanel();
+		panneauPrincipal = new MainPanel();
 		Toolbar toolbar = new Toolbar();
 		add(panneauPrincipal);
 		add(toolbar, BorderLayout.NORTH);
-		// Faire en sorte que le X de la fen�tre ferme la fen�tre
+		// Faire en sorte que le X de la fenetre ferme la fen�tre
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setTitle(TITRE_FENETRE);
 		setSize(DIMENSION);
-		// Rendre la fen�tre visible
+		// Rendre la fenetre visible
 		setVisible(true);
-		// Mettre la fen�tre au centre de l'�cran
+		// Mettre la fenetre au centre de l'ecran
 		setLocationRelativeTo(null);
-		// Emp�cher la redimension de la fen�tre
+		// Empecher la redimension de la fenetre
 		setResizable(false);
 	}
 
@@ -37,4 +41,21 @@ public class MainFrame extends JFrame implements PropertyChangeListener {
 			System.out.println(evt.getNewValue());
 		}
 	}
+
+	/** Getter de l'attribut : String
+	 * @return String : Instance de l'attribut this.imgPath
+	 */
+	public String getImgPath() {
+		return ImgPath;
+	}
+
+	/** Setter de l'attribtut : this.imgPath
+	 * @param imgPath : Nouvelle valeur de l'attribut this.imgPath 
+	 */
+	public void setImgPath(String imgPath) {
+		ImgPath = imgPath;
+		panneauPrincipal.setPanelsImage(imgPath);
+	}
+	
+	
 }
