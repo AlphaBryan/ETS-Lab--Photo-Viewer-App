@@ -1,14 +1,15 @@
 package main;
 
-import controlleur.CommandGestion;
+import controlleur.*;
 import vue.MainFrame;
 
 public class Application {
 
+
 	/*
 	 * TODO - Bryan required Help
-	 * Ask1 : L'application ne peut pas etre le client car elle ne crée pas les boutons et ne les connaits pas
-	 * donc comment et ou faire des setsCommand ?
+	 * Ask1 : L'application ne peut pas etre le client car elle ne crï¿½e pas les boutons et ne les connaits pas
+	 * donc comment et ou faire des setsCommand ?w
 	 * 
 	 * le client c'est surement MainFrame ?
 	 * avec des setsCommandRecursif jusqu'aux sub-panels et toolbar ? 
@@ -30,12 +31,9 @@ public class Application {
 	 * Methode permettant : de lancer notre application 
 	 */
 	public static void run() {
-		System.out.println("• Lauching Application...");
-		mainFrame = new MainFrame();  
-		Environnement environnement = new Environnement();
-		environnement.addPropertyChangeListener(mainFrame);
-		environnement.execute();
-		System.out.println("• Application Launched \n");
+		System.out.println("â€¢ Lauching Application...");
+		MainFrame mainFrame = new MainFrame();
+		System.out.println("â€¢ Application Launched \n");
 	}
 	
 	/**
@@ -49,27 +47,7 @@ public class Application {
 		System.out.println( " - Mevo Bryan" );
 		System.out.println( "" );
 	}
-	
-	/**
-	 * Methode permettant : d'attribuer une commande de Chargement 
-	 */
-	public void setChargeCommand() {
-		// TODO
-	}
-	
-	/**
-	 * Methode permettant : d'attribuer une commande de Translation
-	 */
-	public void setTranslationCommand() {
-		// TODO
-	}
-	
-	/**
-	 * Methode permettant : d'attribuer une commande de Zoom
-	 */
-	public void setZoomCommand() {
-		// TODO
-	}
+
 
 	/** Getter de l'attribut : MainFrame
 	 * @return MainFrame : Instance de l'attribut this.mainFrame

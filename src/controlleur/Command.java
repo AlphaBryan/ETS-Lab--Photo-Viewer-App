@@ -5,7 +5,7 @@ import vue.MainPanel;
 public abstract class  Command {
 
 	private MainPanel mainPanel ;
-	
+	protected CommandGestion commandGestion = CommandGestion.getInstance();
 	
 	/**
 	 * Construteur de la classe Command.java
@@ -17,9 +17,9 @@ public abstract class  Command {
 	/**
 	 * Methode permettant : d'executer notre commande 
 	 */
-	public void execute() {
-		System.out.println("# Execution method not defined");
-	}
+	public abstract void execute();
+
+
 	
 	/**
 	 * Methode permettant : de sauvegarder un MainPanel  

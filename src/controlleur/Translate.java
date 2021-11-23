@@ -17,6 +17,7 @@ public class Translate extends Command {
 	**/
 	@Override
 	public void execute() {
-		System.out.println("# Command Translate execution");
+		commandGestion.translation();
+		commandGestion.push(this);
 	}
 }

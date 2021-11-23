@@ -1,5 +1,9 @@
 package vue;
 
+import controlleur.Charge;
+import controlleur.Command;
+import controlleur.Save;
+
 import java.awt.event.ActionEvent;
 import java.io.File;
 
@@ -23,10 +27,20 @@ public class Toolbar extends JMenuBar {
 	private static final String TOOLBAR_UNDO = "Undo";
 
 
+	private JMenu fichier = new JMenu(TOOLBAR_TITRE_FICHIER);
+	private JMenuItem nouvelleImage = new JMenuItem(TOOLBAR_NOUVELLEIMAGE);
+	private JMenuItem sauvegarder = new JMenuItem(TOOLBAR_SAUVEGARDER);
+	private JMenuItem charger = new JMenuItem(TOOLBAR_CHARGER_FICHIER);
+
+	private JMenu command =  new JMenu(TOOLBAR_COMMAND);
+	private JMenuItem undo = new JMenuItem(TOOLBAR_UNDO);
 
 	public Toolbar() {
+		fichier.add(nouvelleImage);
+		fichier.add(charger) ;
+		fichier.add(sauvegarder) ;
+		add(fichier);
 		ajouterMenuFichier();
-		ajouterCommand();
 
 
 	}
@@ -40,11 +54,6 @@ public class Toolbar extends JMenuBar {
 	 * Creer le menu de Fichier
 	 */
 	private void ajouterMenuFichier() {
-		JMenu fichier = new JMenu(TOOLBAR_TITRE_FICHIER);
-		JMenuItem nouvelleImage = new JMenuItem(TOOLBAR_NOUVELLEIMAGE);
-		JMenuItem sauvegarder = new JMenuItem(TOOLBAR_SAUVEGARDER);
-		JMenuItem charger = new JMenuItem(TOOLBAR_CHARGER_FICHIER);
-
 
 	
 		nouvelleImage.addActionListener((ActionEvent e) -> {  
@@ -68,7 +77,6 @@ public class Toolbar extends JMenuBar {
 				// InitPanelsImages(selectedFile.getAbsolutePath()) ;
 			}
 		});
-		fichier.add(nouvelleImage);
 
 		charger.addActionListener((ActionEvent e) -> {
 			/**
@@ -89,9 +97,8 @@ public class Toolbar extends JMenuBar {
 
 	}
 
-	private void ajouterCommand() {
-		JMenu command =  new JMenu(TOOLBAR_COMMAND);
-		JMenuItem undo = new JMenuItem(TOOLBAR_UNDO);
+	public void setUndo() {
+
 		undo.addActionListener((ActionEvent e) -> {
 			/**
 			 * TODO
@@ -103,11 +110,23 @@ public class Toolbar extends JMenuBar {
 
 	
 	private void InitPanelsImages(String path) {
-		System.out.println("• Loading Image : " + path);
+		System.out.println("â€¢ Loading Image : " + path);
 		Application.getMainFrame().setImgPath(path);
-		System.out.println("• Image succesfully Loaded ");
+		System.out.println("â€¢ Image succesfully Loaded ");
 
 	}
 
+
+
+	public void setAction(Charge command){
+		charger.addActionListener((ActionEvent e) -> {
+			command.execute();
+		});
+	}
+	public void setAction(Save command){
+		sauvegarder.addActionListener((ActionEvent e) -> {
+			command.execute();
+		});
+	}
 
 }

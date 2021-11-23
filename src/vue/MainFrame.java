@@ -1,5 +1,10 @@
 package vue;
 
+import controlleur.Charge;
+import controlleur.Save;
+import controlleur.Translate;
+import controlleur.Zoom;
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.beans.PropertyChangeEvent;
@@ -7,7 +12,7 @@ import java.beans.PropertyChangeListener;
 
 import javax.swing.JFrame;
 
-public class MainFrame extends JFrame implements PropertyChangeListener {
+public class MainFrame extends JFrame  {
 
 	private static final long serialVersionUID = 1L;
 	private static final String TITRE_FENETRE = "Laboratoire 3 : LOG121 - Image";
@@ -17,9 +22,16 @@ public class MainFrame extends JFrame implements PropertyChangeListener {
 	public static MainPanel panneauPrincipal ;
 
 
+	private MainPanel panneauPrincipal = new MainPanel();
+	private Toolbar toolbar = new Toolbar();
+
+	private Save save = new Save();
+	private Charge charge = new Charge();
+
 	public MainFrame() {
 		panneauPrincipal = new MainPanel();
 		Toolbar toolbar = new Toolbar();
+		setUpCommandToolbar();
 		add(panneauPrincipal);
 		add(toolbar, BorderLayout.NORTH);
 		// Faire en sorte que le X de la fenetre ferme la fen�tre
@@ -34,12 +46,12 @@ public class MainFrame extends JFrame implements PropertyChangeListener {
 		setResizable(false);
 	}
 
-	@Override
-	public void propertyChange(PropertyChangeEvent evt) {
-		if (evt.getPropertyName().equals("TEST")) {
-			repaint();
-			System.out.println(evt.getNewValue());
-		}
+
+
+	public void setUpCommandToolbar(){
+		toolbar.setAction(save);
+		toolbar.setAction(charge);
+		toolbar.setUndo();
 	}
 
 	/** Getter de l'attribut : String
