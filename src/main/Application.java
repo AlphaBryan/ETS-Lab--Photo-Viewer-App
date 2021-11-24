@@ -7,20 +7,18 @@ public class Application {
 
 
 	/*
-	 * TODO - Bryan required Help
-	 * Ask1 : L'application ne peut pas etre le client car elle ne cr�e pas les boutons et ne les connaits pas
-	 * donc comment et ou faire des setsCommand ?w
+	 * TODO - Finir le lab Jeudi
+	 * 1 : R�gler les tailles de l'image 
+	 * 2 : Patron Observateur
+	 * 3 : finir Commande 
+	 * 4 : Boire Vodka	
 	 * 
-	 * le client c'est surement MainFrame ?
-	 * avec des setsCommandRecursif jusqu'aux sub-panels et toolbar ? 
-	 * 
-	 * Ask2 : by the way, a quelle moment on utilise commandGestion Here
 	 **/
 	
 	
 	
 	private static MainFrame mainFrame ; 
-	private CommandGestion commandGestion =  CommandGestion.getInstance() ; 
+	//private CommandGestion commandGestion =  CommandGestion.getInstance() ; 
 
 	public static void main(String[] args) {
 		AppInfo() ;
@@ -31,9 +29,9 @@ public class Application {
 	 * Methode permettant : de lancer notre application 
 	 */
 	public static void run() {
-		System.out.println("• Lauching Application...");
-		MainFrame mainFrame = new MainFrame();
-		System.out.println("• Application Launched \n");
+		System.out.println(" # Lauching Application...");
+		mainFrame = new MainFrame();
+		System.out.println(" # Application Launched \n");
 	}
 	
 	/**

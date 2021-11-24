@@ -2,6 +2,8 @@ package vue;
 
 
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.TitledBorder;
 
 import model.Images;
 
@@ -10,9 +12,10 @@ import java.awt.*;
 public class PanelTranslation  extends JPanel {
 
     
-    private static final long serialVersionUID = 3L;
+    private static final long serialVersionUID = 1L;
 	private Images image;
-    
+    private Images imageTest = new Images ("./test/TestedImage.png") ; 
+
 	/**
 	 * Construteur de la classe PanelStatic.java
 	 * @param XXX : ___
@@ -20,8 +23,20 @@ public class PanelTranslation  extends JPanel {
 	public PanelTranslation(Images image) {
 		super();
 		this.image = image;
+		initBorder("Translation");
 	}
 
+	/**
+	 * Methode permettant : de
+	 * @param XXX : ___
+	 */
+	private void initBorder(String panelType) {
+		Border blackline = BorderFactory.createLineBorder(Color.black);
+		TitledBorder title = BorderFactory.createTitledBorder( blackline, panelType);
+		title.setTitleJustification(TitledBorder.CENTER);
+		setBorder(title);
+	}
+	
 	/**
 	@see javax.swing.JComponent#paint(java.awt.Graphics)
 	**/
@@ -29,13 +44,17 @@ public class PanelTranslation  extends JPanel {
 	public void paint(Graphics g) {
 		super.paint(g);
 		if(image != null ) {
-	        g.drawImage(image.getImg(), 0, 0, this); // see javadoc for more info on the parameters            
+	        g.drawImage(image.getImg(), 0, 0, this); // see javadoc for more info on the parameters   
 		}
 		else{
-            g.drawRect(20, 20, 250, 250);
-            g.drawString("Translation", 125, 10);
+	        g.drawImage(imageTest.getImg(), 15, 15, this);
 		}
 	}
+	
+    private void testImage() {
+        String MettreImageTest = "./test/TestedImage.png" ; 
+		this.image = new Images(MettreImageTest);
+    }
 
     public void Translate(int x , int y ){
 

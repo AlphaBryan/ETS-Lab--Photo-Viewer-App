@@ -1,7 +1,6 @@
 package vue;
 
 import controlleur.Charge;
-import controlleur.Command;
 import controlleur.Save;
 
 import java.awt.event.ActionEvent;
@@ -58,7 +57,7 @@ public class Toolbar extends JMenuBar {
 	
 		nouvelleImage.addActionListener((ActionEvent e) -> {  
 			JFileChooser fileChooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
-			fileChooser.setDialogTitle("S�lectionnez une  image  : ");
+			fileChooser.setDialogTitle("Selectionnez une  image  : ");
 			fileChooser.setAcceptAllFileFilterUsed(false);
 			// Creer un filtre
 			FileNameExtensionFilter filtre = new FileNameExtensionFilter(".png", "png");
@@ -71,10 +70,7 @@ public class Toolbar extends JMenuBar {
 				
 				File selectedFile = fileChooser.getSelectedFile();
 				
-				System.out.println(selectedFile.getAbsolutePath()); // TODO : CA STOP LE PROGRAMME 
-				System.out.println("test");
-				
-				// InitPanelsImages(selectedFile.getAbsolutePath()) ;
+				InitPanelsImages(selectedFile.getAbsolutePath()) ;
 			}
 		});
 
@@ -110,9 +106,9 @@ public class Toolbar extends JMenuBar {
 
 	
 	private void InitPanelsImages(String path) {
-		System.out.println("• Loading Image : " + path);
+		System.out.println(" # Loading Image : " + path);
 		Application.getMainFrame().setImgPath(path);
-		System.out.println("• Image succesfully Loaded ");
+		System.out.println(" # Image succesfully Loaded ");
 
 	}
 

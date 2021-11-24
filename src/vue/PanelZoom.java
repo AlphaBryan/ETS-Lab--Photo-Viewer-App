@@ -2,12 +2,17 @@ package vue;
 
 import model.Images;
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.TitledBorder;
+
 import java.awt.*;
 
 public class PanelZoom extends JPanel{
 
-    private static final long serialVersionUID = 2L;
+    private static final long serialVersionUID = 1L;
 	private Images image;
+    private Images imageTest = new Images ("./test/TestedImage.png") ; 
+
     
 	/**
 	 * Construteur de la classe PanelStatic.java
@@ -16,6 +21,18 @@ public class PanelZoom extends JPanel{
 	public PanelZoom(Images image) {
 		super();
 		this.image = image;
+		initBorder("Zoom") ; 
+	}
+	
+	/**
+	 * Methode permettant : de
+	 * @param XXX : ___
+	 */
+	private void initBorder(String panelType) {
+		Border blackline = BorderFactory.createLineBorder(Color.black);
+		TitledBorder title = BorderFactory.createTitledBorder( blackline, panelType);
+		title.setTitleJustification(TitledBorder.CENTER);
+		setBorder(title);
 	}
 	
 	/**
@@ -25,11 +42,10 @@ public class PanelZoom extends JPanel{
 	public void paint(Graphics g) {
 		super.paint(g);
 		if(image != null ) {
-	        g.drawImage(image.getImg(), 0, 0, this); // see javadoc for more info on the parameters            
+	        g.drawImage(image.getImg(), 0, 0, this); // see javadoc for more info on the parameters   
 		}
 		else{
-            g.drawRect(20, 20, 250, 250);
-            g.drawString("Zoom", 125, 10);
+	        g.drawImage(imageTest.getImg(), 15, 15, this);
 		}
 	}
 	

@@ -3,6 +3,7 @@ package vue;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.beans.PropertyChangeEvent;
 
 import javax.swing.*;
 
@@ -28,8 +29,6 @@ public class MainPanel extends JPanel{
 
 		pTranslation = new PanelTranslation(null);
 		pTranslation.setPreferredSize( new Dimension(300, 300) );
-	    setBackground(Color.green);
-	
 		
 	    add(pZoom) ; 
 	    add(pTranslation) ; 
@@ -95,8 +94,6 @@ public class MainPanel extends JPanel{
 	public void setpTranslation(PanelTranslation pTranslation) {
 		this.pTranslation = pTranslation;
 	} 
-	
-	
 	
 	
 }

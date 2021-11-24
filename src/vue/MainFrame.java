@@ -2,13 +2,9 @@ package vue;
 
 import controlleur.Charge;
 import controlleur.Save;
-import controlleur.Translate;
-import controlleur.Zoom;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 
 import javax.swing.JFrame;
 
@@ -18,11 +14,8 @@ public class MainFrame extends JFrame  {
 	private static final String TITRE_FENETRE = "Laboratoire 3 : LOG121 - Image";
 	private static final Dimension DIMENSION = new Dimension(700, 700);
 	
-	private String ImgPath = " "; 
 	public static MainPanel panneauPrincipal ;
 
-
-	private MainPanel panneauPrincipal = new MainPanel();
 	private Toolbar toolbar = new Toolbar();
 
 	private Save save = new Save();
@@ -57,17 +50,16 @@ public class MainFrame extends JFrame  {
 	/** Getter de l'attribut : String
 	 * @return String : Instance de l'attribut this.imgPath
 	 */
-	public String getImgPath() {
-		return ImgPath;
-	}
+
 
 	/** Setter de l'attribtut : this.imgPath
 	 * @param imgPath : Nouvelle valeur de l'attribut this.imgPath 
 	 */
 	public void setImgPath(String imgPath) {
-		ImgPath = imgPath;
 		panneauPrincipal.setPanelsImage(imgPath);
+		repaint();
 	}
+	
 	
 	
 }
