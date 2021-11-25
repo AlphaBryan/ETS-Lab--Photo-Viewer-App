@@ -5,7 +5,8 @@ import vue.MainFrame;
 
 public class Application {
 
-
+	public static int x;
+	public static int y;
 	/*
 	 * TODO - Finir le lab Jeudi
 	 * 1 : Régler les tailles de l'image 

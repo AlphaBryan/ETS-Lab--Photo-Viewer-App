@@ -8,6 +8,7 @@ import java.beans.PropertyChangeEvent;
 import javax.swing.*;
 
 import model.Images;
+import model.Perspective;
 
 public class MainPanel extends JPanel{
 	
@@ -21,13 +22,14 @@ public class MainPanel extends JPanel{
 	public MainPanel() {
 		super();	
 
-		pStatic = new PanelStatic(null);
+
+		pStatic = new PanelStatic(new Perspective());
 		pStatic.setPreferredSize( new Dimension(300, 300) );
 		
-		pZoom = new PanelZoom(null);
+		pZoom = new PanelZoom(new Perspective());
 		pZoom.setPreferredSize( new Dimension(300, 300) );
 
-		pTranslation = new PanelTranslation(null);
+		pTranslation = new PanelTranslation(new Perspective());
 		pTranslation.setPreferredSize( new Dimension(300, 300) );
 		
 	    add(pZoom) ; 
@@ -53,6 +55,7 @@ public class MainPanel extends JPanel{
 	}
 
 	public void setPanelsImage(String path) {
+
 		pStatic.setImage(path);
 		pTranslation.setImage(path);
 		pZoom.setImage(path);

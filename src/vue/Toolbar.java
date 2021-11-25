@@ -5,6 +5,7 @@ import controlleur.Save;
 
 import java.awt.event.ActionEvent;
 import java.io.File;
+import java.util.Scanner;
 
 import javax.swing.JFileChooser;
 import javax.swing.JMenu;
@@ -38,9 +39,11 @@ public class Toolbar extends JMenuBar {
 		fichier.add(nouvelleImage);
 		fichier.add(charger) ;
 		fichier.add(sauvegarder) ;
+		command.add(undo) ;
 		add(fichier);
+		add(command);
 		ajouterMenuFichier();
-
+		//setUndo();
 
 	}
 
@@ -74,34 +77,17 @@ public class Toolbar extends JMenuBar {
 			}
 		});
 
-		charger.addActionListener((ActionEvent e) -> {
-			/**
-			 * TODO
-			 */
-		});
-		fichier.add(charger) ;
-
-		sauvegarder.addActionListener((ActionEvent e) -> {
-			/**
-			 * TODO
-			 */
-		});
-		fichier.add(sauvegarder) ;
 
 
-		add(fichier);
 
 	}
 
 	public void setUndo() {
 
 		undo.addActionListener((ActionEvent e) -> {
-			/**
-			 * TODO
-			 */
+			System.out.println("UNDO");
 		});
-		command.add(undo) ;
-		add(command);
+
 	}
 
 	
@@ -115,7 +101,9 @@ public class Toolbar extends JMenuBar {
 
 
 	public void setAction(Charge command){
+		System.out.println("USED");
 		charger.addActionListener((ActionEvent e) -> {
+
 			command.execute();
 		});
 	}

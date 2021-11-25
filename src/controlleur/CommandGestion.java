@@ -1,9 +1,13 @@
 package controlleur;
 
+import java.awt.*;
 import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.Scanner;
 
+import main.Application;
 import vue.MainPanel;
+import vue.PanelTranslation;
 
 public class CommandGestion {
 	
@@ -77,7 +81,13 @@ public class CommandGestion {
 	}
 
 	public void save() {
-		System.out.println("SAVED");
+		System.out.println("SAVE");
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter x: ");
+		int x = sc.nextInt();
+		System.out.println("Enter y: ");
+		int y = sc.nextInt();
+		PanelTranslation.perspective.setPositionInPerspective(new Point(x,y));
 	}
 	 
 }

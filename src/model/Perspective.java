@@ -1,18 +1,28 @@
 package model;
 
-import java.awt.Point ; 
-public class Perspective {
 
-	Images imagePerspective ; 
-	Point sizeInPerspective ; 
-	Point positionInPerspective ; 
+
+import java.awt.Point ;
+import java.util.Observable;
+import java.util.Observer;
+
+public class Perspective extends Observable {
+
+	private Images imagePerspective ;
+	private Point sizeInPerspective ;
+	private Point positionInPerspective ;
+	private Observer[] observers;
 	
-	
-	Perspective(Images imagePerspective){
-		this.sizeInPerspective = new Point(-1,-1) ; 
+	public Perspective(Images imagePerspective){
+		this.imagePerspective= imagePerspective;
+		this.sizeInPerspective = new Point(-1,-1) ;
 		this.positionInPerspective = new Point(-1,-1) ; 
 	}
 
+	public Perspective(){
+		this.sizeInPerspective = new Point(0,0) ;
+		this.positionInPerspective = new Point(0,0) ;
+	}
 
 	public Images getImagePerspective() {
 		return imagePerspective;
@@ -42,6 +52,7 @@ public class Perspective {
 	public void setPositionInPerspective(Point positionInPerspective) {
 		this.positionInPerspective = positionInPerspective;
 	}
-	
+
+
 	
 }

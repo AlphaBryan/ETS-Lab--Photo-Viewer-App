@@ -9,21 +9,22 @@ import model.Images;
 import model.Perspective;
 
 import java.awt.*;
+import java.util.Observable;
+import java.util.Observer;
 
-public class PanelTranslation  extends JPanel {
+public class PanelTranslation  extends JPanel implements Observer {
 
-    private static Perspective perspective;
+    public static Perspective perspective;
     private static final long serialVersionUID = 1L;
-	private Images image;
-    private Images imageTest = new Images ("./test/TestedImage.png") ; 
+	private static final Point POS_INIT= new Point(50,50);
 
 	/**
 	 * Construteur de la classe PanelStatic.java
 	 * @param XXX : ___
 	 */
-	public PanelTranslation(Images image) {
+	public PanelTranslation(Perspective perspective) {
 		super();
-		this.image = image;
+		this.perspective= perspective;
 		initBorder("Translation");
 	}
 
@@ -37,29 +38,21 @@ public class PanelTranslation  extends JPanel {
 		title.setTitleJustification(TitledBorder.CENTER);
 		setBorder(title);
 	}
-	
+
 	/**
-	@see javax.swing.JComponent#paint(java.awt.Graphics)
-	**/
+	 @see javax.swing.JComponent#paint(java.awt.Graphics)
+	 **/
 	@Override
 	public void paint(Graphics g) {
 		super.paint(g);
-		if(image != null ) {
-	        g.drawImage(image.getImg(), 0, 0, this); // see javadoc for more info on the parameters   
-		}
-		else{
-	        g.drawImage(imageTest.getImg(), 15, 15, this);
+		if(perspective!=null) {
+			if (perspective.getImagePerspective() != null) {
+				g.drawImage(perspective.getImagePerspective().getImg(), POS_INIT.x+perspective.getPositionInPerspective().x, POS_INIT.y+perspective.getPositionInPerspective().y, this); // see javadoc for more info on the parameters
+			}
 		}
 	}
 	
-    private void testImage() {
-        String MettreImageTest = "./test/TestedImage.png" ; 
-		this.image = new Images(MettreImageTest);
-    }
 
-    public void Translate(int x , int y ){
-
-    }
 
     /**
     @see java.awt.Component#getMousePosition()
@@ -68,28 +61,33 @@ public class PanelTranslation  extends JPanel {
     public Point getMousePosition()  {
         return super.getMousePosition();
     }
-    
-    
+
+
 	/** Getter de l'attribut : Images
 	 * @return Images : Instance de l'attribut this.image
 	 */
 	public Images getImage() {
-		return image;
+		return perspective.getImagePerspective();
 	}
 
 	/** Setter de l'attribtut : this.image
-	 * @param image : Nouvelle valeur de l'attribut this.image 
+	 * @param image : Nouvelle valeur de l'attribut this.image
 	 */
 	public void setImage(Images image) {
-		this.image = image;
+		perspective.setImagePerspective(image);
 	}
-	
+
 	/** Setter de l'attribtut : this.image
-	 * @param imagePath : Nouveau Chemin absolue de l'attribut this.image 
+	 * @param imagePath : Nouveau Chemin absolue de l'attribut this.image
 	 */
 	public void setImage(String imagePath) {
-		this.image = new Images(imagePath);
+		perspective.setImagePerspective(new Images(imagePath));
 	}
 
 
+
+	@Override
+	public void update(Observable o, Object arg) {
+
+	}
 }
