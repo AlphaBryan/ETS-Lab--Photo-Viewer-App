@@ -1,6 +1,8 @@
 package vue;
 
 import model.Images;
+import model.Perspective;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
@@ -9,6 +11,7 @@ import java.awt.*;
 
 public class PanelZoom extends JPanel{
 
+	private static Perspective perspective;
     private static final long serialVersionUID = 1L;
 	private Images image;
     private Images imageTest = new Images ("./test/TestedImage.png") ; 
