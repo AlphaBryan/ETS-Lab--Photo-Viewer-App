@@ -6,6 +6,7 @@ import java.util.Deque;
 import java.util.Scanner;
 
 import main.Application;
+import model.Perspective;
 import vue.MainPanel;
 import vue.PanelTranslation;
 
@@ -14,6 +15,9 @@ public class CommandGestion {
 	private static CommandGestion commandGestion ; 
 	private static Deque<Command> savedCommands;
 
+	private Perspective perspectiveStatic =new Perspective();
+	private Perspective perspectiveTranslation =new Perspective();
+	private Perspective perspectiveZoom =new Perspective();
 	
 	/**
 	 * Constructeur de notre gestionnaire de commande
@@ -82,12 +86,18 @@ public class CommandGestion {
 
 	public void save() {
 		System.out.println("SAVE");
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter x: ");
-		int x = sc.nextInt();
-		System.out.println("Enter y: ");
-		int y = sc.nextInt();
-		PanelTranslation.perspective.setPositionInPerspective(new Point(x,y));
+
 	}
-	 
+
+	public Perspective getPerspectiveStatic() {
+		return perspectiveStatic;
+	}
+
+	public Perspective getPerspectiveTranslation() {
+		return perspectiveTranslation;
+	}
+
+	public Perspective getPerspectiveZoom() {
+		return perspectiveZoom;
+	}
 }

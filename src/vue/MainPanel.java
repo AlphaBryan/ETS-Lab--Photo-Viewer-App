@@ -15,7 +15,9 @@ public class MainPanel extends JPanel{
 	private PanelStatic pStatic ; 
 	private PanelZoom pZoom ; 
 	private PanelTranslation pTranslation ;
-	
+
+
+
 	/**
 	 * Construteur de la classe MainPanel.java
 	 */
@@ -23,13 +25,13 @@ public class MainPanel extends JPanel{
 		super();	
 
 
-		pStatic = new PanelStatic(new Perspective());
+		pStatic = new PanelStatic();
 		pStatic.setPreferredSize( new Dimension(300, 300) );
 		
-		pZoom = new PanelZoom(new Perspective());
+		pZoom = new PanelZoom();
 		pZoom.setPreferredSize( new Dimension(300, 300) );
 
-		pTranslation = new PanelTranslation(new Perspective());
+		pTranslation = new PanelTranslation();
 		pTranslation.setPreferredSize( new Dimension(300, 300) );
 		
 	    add(pZoom) ; 

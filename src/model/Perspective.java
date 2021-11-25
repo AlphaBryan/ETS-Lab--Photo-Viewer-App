@@ -6,12 +6,12 @@ import java.awt.Point ;
 import java.util.Observable;
 import java.util.Observer;
 
-public class Perspective extends Observable {
+public class Perspective extends Observable{
 
 	private Images imagePerspective ;
 	private Point sizeInPerspective ;
 	private Point positionInPerspective ;
-	private Observer[] observers;
+	private Observer observer;
 	
 	public Perspective(Images imagePerspective){
 		this.imagePerspective= imagePerspective;
@@ -53,6 +53,13 @@ public class Perspective extends Observable {
 		this.positionInPerspective = positionInPerspective;
 	}
 
+	public void addObsrvr(Observer o){
+		this.observer=o;
+	}
+
+	public void notifyObserver(){
+		observer.update(this, null);
+	}
 
 	
 }

@@ -1,5 +1,6 @@
 package vue;
 
+import controlleur.CommandGestion;
 import model.Images;
 import model.Perspective;
 
@@ -13,8 +14,8 @@ import java.util.Observer;
 
 public class PanelZoom extends JPanel implements Observer {
 
-	private Perspective perspective;
-    private static final long serialVersionUID = 1L;
+	private CommandGestion commandGestion = CommandGestion.getInstance();
+	private static final long serialVersionUID = 1L;
 	private static final Point POS_INIT= new Point(50,50);
 
     
@@ -22,10 +23,10 @@ public class PanelZoom extends JPanel implements Observer {
 	 * Construteur de la classe PanelStatic.java
 	 * @param XXX : ___
 	 */
-	public PanelZoom(Perspective perspective) {
+	public PanelZoom( ) {
 		super();
-		this.perspective= perspective;
-		initBorder("Zoom") ; 
+		commandGestion.getPerspectiveZoom().addObserver(this);
+		initBorder("Zoom") ;
 	}
 	
 	/**
@@ -45,11 +46,13 @@ public class PanelZoom extends JPanel implements Observer {
 	@Override
 	public void paint(Graphics g) {
 		super.paint(g);
-		if(perspective!=null) {
-		if (perspective.getImagePerspective() != null) {
-			g.drawImage(perspective.getImagePerspective().getImg(), POS_INIT.x, POS_INIT.y, this); // see javadoc for more info on the parameters
+		if(commandGestion.getPerspectiveZoom()!=null) {
+			if (commandGestion.getPerspectiveZoom().getImagePerspective() != null) {
+				g.drawImage(commandGestion.getPerspectiveZoom().getImagePerspective().getImg(), POS_INIT.x, POS_INIT.y, this); // see javadoc for more info on the parameters
+			}
 		}
-		}
+
+
 	}
 	
     /**
@@ -64,21 +67,21 @@ public class PanelZoom extends JPanel implements Observer {
 	 * @return Images : Instance de l'attribut this.image
 	 */
 	public Images getImage() {
-		return perspective.getImagePerspective();
+		return commandGestion.getPerspectiveZoom().getImagePerspective();
 	}
 
 	/** Setter de l'attribtut : this.image
 	 * @param image : Nouvelle valeur de l'attribut this.image
 	 */
 	public void setImage(Images image) {
-		perspective.setImagePerspective(image);
+		commandGestion.getPerspectiveZoom().setImagePerspective(image);
 	}
 
 	/** Setter de l'attribtut : this.image
 	 * @param imagePath : Nouveau Chemin absolue de l'attribut this.image
 	 */
 	public void setImage(String imagePath) {
-		perspective.setImagePerspective(new Images(imagePath));
+		commandGestion.getPerspectiveZoom().setImagePerspective(new Images(imagePath));
 	}
 
 

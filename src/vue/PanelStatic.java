@@ -5,6 +5,7 @@ import javax.swing.JPanel;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 
+import controlleur.CommandGestion;
 import main.Application;
 
 import java.awt.Graphics;
@@ -18,19 +19,19 @@ import model.Images;
 import model.Perspective;
 
 public class PanelStatic extends JPanel implements Observer {
-	
-    private static final long serialVersionUID = 1L;
-    private Perspective perspective;
-	private static final Point POS_INIT= new Point(50,50);
+
+	private CommandGestion commandGestion = CommandGestion.getInstance();
+	private static final long serialVersionUID = 1L;
+    private static final Point POS_INIT= new Point(50,50);
 
 
 	/**
 	 * Construteur de la classe PanelStatic.java
 	 * @param Image : Instance de l'attribut de l'image du panel 
 	 */
-	public PanelStatic(Perspective perspective) {
+	public PanelStatic() {
 		super();
-		this.perspective= perspective;
+		commandGestion.getPerspectiveStatic().addObserver(this);
 		initBorder("Static");
 	}
 	
@@ -51,9 +52,9 @@ public class PanelStatic extends JPanel implements Observer {
 	@Override
 	public void paint(Graphics g) {
         super.paint(g);
-        if(perspective!=null) {
-			if (perspective.getImagePerspective() != null) {
-				g.drawImage(perspective.getImagePerspective().getImg(), POS_INIT.x, POS_INIT.y, this); // see javadoc for more info on the parameters
+        if(commandGestion.getPerspectiveStatic()!=null) {
+			if (commandGestion.getPerspectiveStatic().getImagePerspective() != null) {
+				g.drawImage(commandGestion.getPerspectiveStatic().getImagePerspective().getImg(), POS_INIT.x, POS_INIT.y, this); // see javadoc for more info on the parameters
 			}
 		}
 
@@ -64,21 +65,21 @@ public class PanelStatic extends JPanel implements Observer {
 	 * @return Images : Instance de l'attribut this.image
 	 */
 	public Images getImage() {
-		return perspective.getImagePerspective();
+		return commandGestion.getPerspectiveStatic().getImagePerspective();
 	}
 
 	/** Setter de l'attribtut : this.image
 	 * @param image : Nouvelle valeur de l'attribut this.image 
 	 */
 	public void setImage(Images image) {
-		perspective.setImagePerspective(image);
+		commandGestion.getPerspectiveStatic().setImagePerspective(image);
 	}
 
 	/** Setter de l'attribtut : this.image
 	 * @param imagePath : Nouveau Chemin absolue de l'attribut this.image 
 	 */
 	public void setImage(String imagePath) {
-		perspective.setImagePerspective(new Images(imagePath));
+		commandGestion.getPerspectiveStatic().setImagePerspective(new Images(imagePath));
 	}
 
 

@@ -19,5 +19,6 @@ public class Translate extends Command {
 	public void execute() {
 		commandGestion.translation();
 		commandGestion.push(this);
+
 	}
 }
