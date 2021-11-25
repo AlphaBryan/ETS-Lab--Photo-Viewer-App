@@ -19,7 +19,7 @@ public class MainPanel extends JPanel{
 
 
 	/**
-	 * Construteur de la classe MainPanel.java
+	 * Construteur de la classe ZoomTest.java
 	 */
 	public MainPanel() {
 		super();	
@@ -40,7 +40,7 @@ public class MainPanel extends JPanel{
 	}
 	
 	/**
-	 * Construteur de la classe MainPanel.java
+	 * Construteur de la classe ZoomTest.java
 	 * @param pStatic : Panneau statique de l'interface  
 	 * @param pZoom : Panneau zoom de l'interface 
 	 * @param pTranslation : Panneau translation de l'interface 
