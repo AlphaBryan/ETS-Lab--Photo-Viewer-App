@@ -43,9 +43,9 @@ public class MainFrame extends JFrame  {
 
 	public void setUpCommandToolbar(){
 		System.out.println("ENTERED SET UP COMMAND TOOL BAR");
-		toolbar.setAction(save);
-		toolbar.setAction(charge);
-		toolbar.setUndo();
+		Toolbar.setAction(save);
+		Toolbar.setAction(charge);
+		Toolbar.setUndo();
 	}
 
 	/** Getter de l'attribut : String

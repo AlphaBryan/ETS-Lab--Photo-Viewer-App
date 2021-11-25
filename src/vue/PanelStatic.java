@@ -10,13 +10,14 @@ import main.Application;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Color;
-
+import java.util.Observable;
+import java.util.Observer;
 
 
 import model.Images;
 import model.Perspective;
 
-public class PanelStatic extends JPanel {
+public class PanelStatic extends JPanel implements Observer {
 	
     private static final long serialVersionUID = 1L;
     private Perspective perspective;
@@ -81,4 +82,8 @@ public class PanelStatic extends JPanel {
 	}
 
 
+	@Override
+	public void update(Observable o, Object arg) {
+		repaint();
+	}
 }

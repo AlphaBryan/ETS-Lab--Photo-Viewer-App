@@ -50,6 +50,7 @@ public class PanelTranslation  extends JPanel implements Observer {
 				g.drawImage(perspective.getImagePerspective().getImg(), POS_INIT.x+perspective.getPositionInPerspective().x, POS_INIT.y+perspective.getPositionInPerspective().y, this); // see javadoc for more info on the parameters
 			}
 		}
+		System.out.println("DESSIN");
 	}
 	
 
@@ -88,6 +89,6 @@ public class PanelTranslation  extends JPanel implements Observer {
 
 	@Override
 	public void update(Observable o, Object arg) {
-
+		repaint();
 	}
 }

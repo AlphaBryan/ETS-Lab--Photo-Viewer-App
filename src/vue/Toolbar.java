@@ -29,11 +29,11 @@ public class Toolbar extends JMenuBar {
 
 	private JMenu fichier = new JMenu(TOOLBAR_TITRE_FICHIER);
 	private JMenuItem nouvelleImage = new JMenuItem(TOOLBAR_NOUVELLEIMAGE);
-	private JMenuItem sauvegarder = new JMenuItem(TOOLBAR_SAUVEGARDER);
-	private JMenuItem charger = new JMenuItem(TOOLBAR_CHARGER_FICHIER);
+	private static JMenuItem sauvegarder = new JMenuItem(TOOLBAR_SAUVEGARDER);
+	private static JMenuItem charger = new JMenuItem(TOOLBAR_CHARGER_FICHIER);
 
 	private JMenu command =  new JMenu(TOOLBAR_COMMAND);
-	private JMenuItem undo = new JMenuItem(TOOLBAR_UNDO);
+	private static JMenuItem undo = new JMenuItem(TOOLBAR_UNDO);
 
 	public Toolbar() {
 		fichier.add(nouvelleImage);
@@ -43,7 +43,7 @@ public class Toolbar extends JMenuBar {
 		add(fichier);
 		add(command);
 		ajouterMenuFichier();
-		//setUndo();
+
 
 	}
 
@@ -79,10 +79,9 @@ public class Toolbar extends JMenuBar {
 
 
 
-
 	}
 
-	public void setUndo() {
+	public static void setUndo() {
 
 		undo.addActionListener((ActionEvent e) -> {
 			System.out.println("UNDO");
@@ -100,14 +99,12 @@ public class Toolbar extends JMenuBar {
 
 
 
-	public void setAction(Charge command){
-		System.out.println("USED");
+	public static void setAction(Charge command){
 		charger.addActionListener((ActionEvent e) -> {
-
 			command.execute();
 		});
 	}
-	public void setAction(Save command){
+	public static void setAction(Save command){
 		sauvegarder.addActionListener((ActionEvent e) -> {
 			command.execute();
 		});

@@ -19,7 +19,6 @@ public class Application {
 	
 	
 	private static MainFrame mainFrame ; 
-	//private CommandGestion commandGestion =  CommandGestion.getInstance() ; 
 
 	public static void main(String[] args) {
 		AppInfo() ;
