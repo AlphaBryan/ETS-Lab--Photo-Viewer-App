@@ -5,19 +5,30 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 
+import Tools.TranslationInvoker;
 import controlleur.CommandGestion;
 import model.Images;
 import model.Perspective;
 
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.Observable;
 import java.util.Observer;
-
+import java.util.TimerTask;
+import java.util.Timer ; 
 public class PanelTranslation  extends JPanel implements Observer {
 
 	private CommandGestion commandGestion = CommandGestion.getInstance();
-    private static final long serialVersionUID = 1L;
-	public static final Point POS_INIT= new Point(50,50);
+	private static final long serialVersionUID = 1L;
+
+
+	//public static final Point POS_INIT= new Point(50,50);
+
+	/**
+	 * TODO Fixer taille image avec perspective 
+	 **
+	 */
 
 	/**
 	 * Construteur de la classe PanelStatic.java
@@ -27,6 +38,49 @@ public class PanelTranslation  extends JPanel implements Observer {
 		super();
 		commandGestion.getPerspectiveTranslation().addObserver(this);
 		initBorder("Translation");
+
+		addMouseListener(new MouseListener() {
+
+
+		//	private Boolean dragging = false ; 
+
+
+			private TranslationInvoker dragger = new TranslationInvoker(null) ; 
+	
+
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+
+			}
+ 
+			@Override
+			public void mousePressed(MouseEvent e) {
+				commandGestion.getPerspectiveTranslation().setFocus(true);
+				System.out.println("\n- Translation:" + e.getPoint().x + " "+ e.getPoint().y );
+				dragger.setMousePosition(new Point(e.getPoint().x, e.getPoint().y))  ; 
+				dragger.drag();
+				repaint() ; //Update ?
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {		
+				commandGestion.getPerspectiveTranslation().setFocus(false);
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+			}
+
+		}
+
+				) ; 
 	}
 
 	/**
@@ -48,22 +102,22 @@ public class PanelTranslation  extends JPanel implements Observer {
 		super.paint(g);
 		if(commandGestion.getPerspectiveTranslation()!=null) {
 			if (commandGestion.getPerspectiveTranslation().getImagePerspective() != null) {
-				g.drawImage(commandGestion.getPerspectiveTranslation().getImagePerspective().getImg(), POS_INIT.x, POS_INIT.y, this); // see javadoc for more info on the parameters
+				g.drawImage(commandGestion.getPerspectiveTranslation().getImagePerspective().getImg(), commandGestion.getPerspectiveTranslation().getPositionInPerspective().x-100, commandGestion.getPerspectiveTranslation().getPositionInPerspective().y-100, this); // see javadoc for more info on the parameters
 			}
 		}
 
 
 	}
-	
 
 
-    /**
+
+	/**
     @see java.awt.Component#getMousePosition()
-    **/
-    @Override
-    public Point getMousePosition()  {
-        return super.getMousePosition();
-    }
+	 **/
+	@Override
+	public Point getMousePosition()  {
+		return super.getMousePosition();
+	}
 
 
 	/** Getter de l'attribut : Images

@@ -47,14 +47,6 @@ public class Toolbar extends JMenuBar {
 
 	}
 
-	/**
-	 * TODO : 
-	 *  Reparer nouvelle image qui stop le programme 
-	 * 	Mettre nouvelle image dans une commande 
-	 * */
-	/**
-	 * Creer le menu de Fichier
-	 */
 	private void ajouterMenuFichier() {
 
 	

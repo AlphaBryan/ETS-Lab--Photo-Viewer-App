@@ -9,6 +9,7 @@ import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 
 import java.awt.*;
+
 import java.util.Observable;
 import java.util.Observer;
 

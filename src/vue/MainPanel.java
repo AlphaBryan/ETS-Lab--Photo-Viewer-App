@@ -15,7 +15,7 @@ public class MainPanel extends JPanel{
 	private PanelStatic pStatic ; 
 	private PanelZoom pZoom ; 
 	private PanelTranslation pTranslation ;
-
+	
 
 
 	/**
@@ -33,7 +33,7 @@ public class MainPanel extends JPanel{
 
 		pTranslation = new PanelTranslation();
 		pTranslation.setPreferredSize( new Dimension(300, 300) );
-		
+	//	pTranslation.addMouseListener(mouse) ; 
 	    add(pZoom) ; 
 	    add(pTranslation) ; 
 	    add(pStatic) ; 
