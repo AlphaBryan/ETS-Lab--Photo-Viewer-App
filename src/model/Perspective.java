@@ -3,10 +3,11 @@ package model;
 
 
 import java.awt.Point ;
+import java.io.Serializable;
 import java.util.Observable;
 import java.util.Observer;
 
-public class Perspective extends Observable{
+public class Perspective extends Observable   implements Serializable {
 
 	private Images imagePerspective ;
 	private Point sizeInPerspective ;

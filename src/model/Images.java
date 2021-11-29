@@ -3,8 +3,9 @@ package model;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.File;
+import java.io.Serializable;
 
-public class Images {
+public class Images implements  Serializable {
 	
 	String path ;
 	Image img ;

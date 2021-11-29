@@ -1,14 +1,30 @@
 package controlleur;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.image.BufferedImage;
+import java.awt.image.ImageObserver;
+import java.awt.image.ImageProducer;
+import java.awt.image.RenderedImage;
+import java.io.*;
+import java.nio.Buffer;
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Deque;
 import java.util.Scanner;
 
 import main.Application;
 import model.Perspective;
+import vue.MainFrame;
 import vue.MainPanel;
 import vue.PanelTranslation;
+import vue.PanelZoom;
+
+
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.filechooser.FileSystemView;
 
 public class CommandGestion {
 	
@@ -69,9 +85,27 @@ public class CommandGestion {
 	 * Methode pour executer la commande Charge
 	 **/
 	public void charge() {
-		System.out.println("CHARGED");
+
+			JFileChooser fileChooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+			fileChooser.setDialogTitle("Selectionnez une  image    : ");
+			fileChooser.setAcceptAllFileFilterUsed(false);
+			// Creer un filtre
+			FileNameExtensionFilter filtre = new FileNameExtensionFilter(".png", "png");
+			fileChooser.addChoosableFileFilter(filtre);
+
+			int returnValue = fileChooser.showOpenDialog(null);
+
+			if (returnValue == JFileChooser.APPROVE_OPTION) {
+
+				File selectedFile = fileChooser.getSelectedFile();
+				Application.getMainFrame().setImgPath(selectedFile.getPath());
+                this.pop();
+                perspectiveTranslation.notifyObservers();
+                perspectiveZoom.notifyObservers();
+
+			}
+
 	}
-	
 	/**
 	 * Methode pour executer la commande Zoom
 	 **/
@@ -101,10 +135,28 @@ public class CommandGestion {
 		perspectiveTranslation.notifyObservers();
 	}
 
-	public void save() {
-		System.out.println("SAVE");
+	public void save( ) {
 
+         ArrayList <Perspective > listePerspective = new ArrayList<Perspective>();
+		try {
+
+            File fichierImage = new File(perspectiveStatic.getImagePerspective().getPath());
+            listePerspective.add(perspectiveStatic);
+            listePerspective.add(perspectiveZoom);
+            listePerspective.add(perspectiveTranslation);
+            BufferedImage image = ImageIO.read(fichierImage);
+            BufferedImage imageTranslation = ImageIO.read(fichierImage);
+            ImageIO.write(image, "png",fichierImage);
+
+
+
+
+		} catch (IOException i) {
+			i.printStackTrace();
+		}
 	}
+
+
 
 	public Perspective getPerspectiveStatic() {
 		return perspectiveStatic;
@@ -117,4 +169,5 @@ public class CommandGestion {
 	public Perspective getPerspectiveZoom() {
 		return perspectiveZoom;
 	}
+
 }
