@@ -1,6 +1,8 @@
 package vue;
 
 import controlleur.CommandGestion;
+import controlleur.ZoomIn;
+import controlleur.ZoomOut;
 import model.Images;
 import model.Perspective;
 
@@ -10,6 +12,8 @@ import javax.swing.border.TitledBorder;
 
 import java.awt.*;
 
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -17,9 +21,12 @@ public class PanelZoom extends JPanel implements Observer {
 
 	private CommandGestion commandGestion = CommandGestion.getInstance();
 	private static final long serialVersionUID = 1L;
-	private static final Point POS_INIT= new Point(50,50);
+	private static final Point POS_INIT= new Point(3,14);
 
-    
+	private ZoomIn zoomIn = new ZoomIn();
+	private ZoomOut zoomOut = new ZoomOut();
+
+
 	/**
 	 * Construteur de la classe PanelStatic.java
 	 * @param XXX : ___
@@ -27,7 +34,18 @@ public class PanelZoom extends JPanel implements Observer {
 	public PanelZoom( ) {
 		super();
 		commandGestion.getPerspectiveZoom().addObserver(this);
+		addMouseWheelListener(new MouseWheelListener() {
+			@Override
+			public void mouseWheelMoved(MouseWheelEvent e) {
+				if(e.getWheelRotation()<0){
+					commandGestion.zoomIn();
+				}else{
+					commandGestion.zoomOut();
+				}
+			}
+		});
 		initBorder("Zoom") ;
+
 	}
 	
 	/**
@@ -49,7 +67,9 @@ public class PanelZoom extends JPanel implements Observer {
 		super.paint(g);
 		if(commandGestion.getPerspectiveZoom()!=null) {
 			if (commandGestion.getPerspectiveZoom().getImagePerspective() != null) {
-				g.drawImage(commandGestion.getPerspectiveZoom().getImagePerspective().getImg(), POS_INIT.x, POS_INIT.y, this); // see javadoc for more info on the parameters
+				g.drawImage(commandGestion.getPerspectiveZoom().getImagePerspective().getImg(), POS_INIT.x, POS_INIT.y,
+						commandGestion.getPerspectiveZoom().getSizeInPerspective().x,
+						commandGestion.getPerspectiveZoom().getSizeInPerspective().y,this);
 			}
 		}
 

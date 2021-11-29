@@ -3,15 +3,8 @@ package model;
 
 
 import java.awt.Point ;
-import java.awt.event.ActionEvent;
 import java.util.Observable;
 import java.util.Observer;
-
-import controlleur.Charge;
-import controlleur.Save;
-import controlleur.Translate;
-import controlleur.Zoom;
-import vue.PanelZoom;
 
 public class Perspective extends Observable{
 
@@ -29,7 +22,7 @@ public class Perspective extends Observable{
 	}
 
 	public Perspective(){
-		this.sizeInPerspective = new Point(0,0) ;
+		this.sizeInPerspective = new Point(200,200) ;
 		this.positionInPerspective = new Point(0,0) ;
 	}
 
@@ -61,12 +54,13 @@ public class Perspective extends Observable{
 	public void setPositionInPerspective(Point positionInPerspective) {
 		this.positionInPerspective = positionInPerspective;
 	}
-
-	public void addObsrvr(Observer o){
+	@Override
+	public void addObserver(Observer o){
 		this.observer=o;
 	}
 
-	public void notifyObserver(){
+	@Override
+	public void notifyObservers(){
 		observer.update(this, null);
 	}
 

@@ -1,9 +1,9 @@
 
 package controlleur;
 
-public class Zoom extends Command {
+public class ZoomIn extends Command {
 
-	public Zoom() {
+	public ZoomIn() {
 		super();
 	}
 
@@ -12,7 +12,7 @@ public class Zoom extends Command {
 	**/
 	@Override
 	public void execute() {
-		commandGestion.zoom();
+		commandGestion.zoomIn();
 		commandGestion.push(this);
 	}
 

@@ -54,7 +54,9 @@ public class PanelStatic extends JPanel implements Observer {
         super.paint(g);
         if(commandGestion.getPerspectiveStatic()!=null) {
 			if (commandGestion.getPerspectiveStatic().getImagePerspective() != null) {
-				g.drawImage(commandGestion.getPerspectiveStatic().getImagePerspective().getImg(), POS_INIT.x, POS_INIT.y, this); // see javadoc for more info on the parameters
+				g.drawImage(commandGestion.getPerspectiveStatic().getImagePerspective().getImg(), POS_INIT.x, POS_INIT.y,
+						commandGestion.getPerspectiveStatic().getSizeInPerspective().x,
+						commandGestion.getPerspectiveStatic().getSizeInPerspective().y, this);
 			}
 		}
 

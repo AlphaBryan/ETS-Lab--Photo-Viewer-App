@@ -29,7 +29,6 @@ public class Images {
 		File tempFile = new File(path);
 		if (tempFile.exists() && !tempFile.isDirectory() ) {
 			img = Toolkit.getDefaultToolkit().createImage(path);
-			img = img.getScaledInstance(200, 200, Image.SCALE_DEFAULT);
 		}
 		else {
 			System.out.println("# Error : File not found");

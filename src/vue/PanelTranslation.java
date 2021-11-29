@@ -42,7 +42,6 @@ public class PanelTranslation  extends JPanel implements Observer {
 		addMouseListener(new MouseListener() {
 
 
-		//	private Boolean dragging = false ; 
 
 
 			private TranslationInvoker dragger = new TranslationInvoker(null) ; 
@@ -102,7 +101,10 @@ public class PanelTranslation  extends JPanel implements Observer {
 		super.paint(g);
 		if(commandGestion.getPerspectiveTranslation()!=null) {
 			if (commandGestion.getPerspectiveTranslation().getImagePerspective() != null) {
-				g.drawImage(commandGestion.getPerspectiveTranslation().getImagePerspective().getImg(), commandGestion.getPerspectiveTranslation().getPositionInPerspective().x-100, commandGestion.getPerspectiveTranslation().getPositionInPerspective().y-100, this); // see javadoc for more info on the parameters
+				g.drawImage(commandGestion.getPerspectiveTranslation().getImagePerspective().getImg()
+						, commandGestion.getPerspectiveTranslation().getPositionInPerspective().x-100
+						, commandGestion.getPerspectiveTranslation().getPositionInPerspective().y-100,commandGestion.getPerspectiveTranslation().getSizeInPerspective().x,
+						commandGestion.getPerspectiveTranslation().getSizeInPerspective().y, this);
 			}
 		}
 

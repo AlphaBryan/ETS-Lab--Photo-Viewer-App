@@ -18,12 +18,14 @@ public class CommandGestion {
 	private Perspective perspectiveStatic =new Perspective();
 	private Perspective perspectiveTranslation =new Perspective();
 	private Perspective perspectiveZoom =new Perspective();
-	
+
+
+
 	/**
 	 * Constructeur de notre gestionnaire de commande
 	 **/
 	private CommandGestion() {
-		this.savedCommands = new ArrayDeque<Command>() ; 
+		this.savedCommands = new ArrayDeque<Command>() ;
 	}
 
 	/**
@@ -73,15 +75,30 @@ public class CommandGestion {
 	/**
 	 * Methode pour executer la commande Zoom
 	 **/
-	public void zoom() {
-
+	public void zoomIn() {
+		int x=perspectiveZoom.getSizeInPerspective().x;
+		int y=perspectiveZoom.getSizeInPerspective().y;
+		x=x+10;
+		y=y+10;
+		perspectiveZoom.setSizeInPerspective(new Point(x,y));
+		perspectiveZoom.notifyObservers();
 	}
-	
+
+	public void zoomOut() {
+		int x=perspectiveZoom.getSizeInPerspective().x;
+		int y=perspectiveZoom.getSizeInPerspective().y;
+		x=x-10;
+		y=y-10;
+		if(x>0 && y>0) {
+			perspectiveZoom.setSizeInPerspective(new Point(x, y));
+			perspectiveZoom.notifyObservers();
+		}
+	}
 	/**
 	 * Methode pour executer la commande Translation
 	 **/
 	public void translation() {
-		
+		perspectiveTranslation.notifyObservers();
 	}
 
 	public void save() {

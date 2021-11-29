@@ -62,6 +62,10 @@ public class MainPanel extends JPanel{
 		pTranslation.setImage(path);
 		pZoom.setImage(path);
 	}
+
+	public MainPanel getMainPanel(){
+		return this;
+	}
 	
 	/** Getter de l'attribut : PanelStatic
 	 * @return PanelStatic : Instance de l'attribut this.pStatic
