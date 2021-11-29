@@ -109,4 +109,6 @@ public class PanelZoom extends JPanel implements Observer {
 	public void update(Observable o, Object arg) {
 		repaint();
 	}
+	
+	
 }

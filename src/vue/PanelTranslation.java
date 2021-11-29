@@ -100,32 +100,61 @@ public class PanelTranslation extends JPanel implements Observer {
 	}
 
 	/**
-	@see java.util.Observer#update(java.util.Observable, java.lang.Object)
-	**/
+	 * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
+	 **/
 	@Override
 	public void update(Observable o, Object arg) {
 		repaint();
 	}
 
-	
 	/**
 	 * Methode permettant : configurer l'action de la commande Translate
+	 * 
 	 * @param command : instance d'une commande de type Translate
-	 * @return void
+	 * @return void 
 	 */
 	public void setAction(Translate command) {
-		this.addMouseMotionListener( new MouseMotionListener() {
+		this.addMouseMotionListener(new MouseMotionListener() {
 
 			@Override
 			public void mouseDragged(MouseEvent e) {
-				command.setX(e.getPoint().x); 
-				command.setY(e.getPoint().y) ; 
-				command.execute() ; 
+				command.setON();
+				command.setX(e.getPoint().x);
+				command.setY(e.getPoint().y);
+				command.execute();
 			}
 
 			@Override
-			public void mouseMoved(MouseEvent e) { }
-			
+			public void mouseMoved(MouseEvent e) {
+			}
+
+		});
+
+		this.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				command.setOFF();
+				command.execute();
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+			}
+
 		});
 	}
+
 }

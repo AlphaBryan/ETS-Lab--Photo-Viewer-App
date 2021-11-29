@@ -84,7 +84,7 @@ public class Toolbar extends JMenuBar {
 
 	public static void setAction(Undo command) {
 		undo.addActionListener((ActionEvent e) -> {
-			command.execute() ; 
+			command.execute() ; 			
 		});
 	}
 

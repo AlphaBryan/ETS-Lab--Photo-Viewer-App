@@ -19,8 +19,13 @@ public class Translate extends Command {
 	**/
 	@Override
 	public void execute() {
+
 		commandGestion.translation(x,y);
-		commandGestion.push(this);
+		savePerspectiveZoom(commandGestion.getPerspectiveZoom()); //may not work propely
+		savePerspectiveTranslation(commandGestion.getPerspectiveTranslation());
+		if(!isEnable()) {
+			commandGestion.push(this);
+		}
 
 	}
 

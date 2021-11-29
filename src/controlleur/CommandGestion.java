@@ -83,8 +83,34 @@ public class CommandGestion {
 //	}
 	
 	public void undo() {
-		System.out.println("hello");
+		System.out.println("Undo launched");
+		//NUG ACTUAL AND LAST ARE EQUAL
+
+
 		System.out.println("saved command : " + savedCommands);
+		Point myposition = perspectiveTranslation.getPositionInPerspective() ; 
+		System.out.println("Actual Position : "+ myposition) ;
+
+		if (savedCommands.size()>0) {
+			Command lastCommand = pop() ;
+ 
+			
+			//get lastcommadState
+			Point lastPosition = lastCommand.getPerspectiveTranslation().getPositionInPerspective() ; 
+			Point lastSize = lastCommand.getPerspectiveZoom().getSizeInPerspective() ; 
+			
+			System.out.println("Last Position : "+ lastPosition) ;
+			//perspectiveZoom = lastCommand.getPerspectiveZoom() ; 
+			//Good 
+			perspectiveZoom.setSizeInPerspective(new Point(100, 100));
+			perspectiveTranslation.setPositionInPerspective(new Point(150, 150)) ;
+			System.out.println("New  Position : "+ 150 + ';'+150) ;
+
+			perspectiveZoom.notifyObservers();
+			perspectiveTranslation.notifyObservers();
+		}
+
+
 	}
 	
 	/**
@@ -138,7 +164,7 @@ public class CommandGestion {
 	 * Methode pour executer la commande Translation
 	 **/
 	public void translation(int x, int y) {
-		commandGestion.getPerspectiveTranslation().setPositionInPerspective(new Point(x,y)) ;
+		perspectiveTranslation.setPositionInPerspective(new Point(x,y)) ;
 		perspectiveTranslation.notifyObservers();
 	}
 

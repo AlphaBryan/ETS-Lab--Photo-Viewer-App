@@ -1,5 +1,7 @@
 package controlleur;
 
+import main.Application;
+
 public class ZoomOut extends Command{
 
     public ZoomOut() {
@@ -12,6 +14,7 @@ public class ZoomOut extends Command{
     @Override
     public void execute() {
         commandGestion.zoomOut();
+		//mainPanel = Application.getMainFrame().getPanneauPrincipal() ; 
         commandGestion.push(this);
     }
 

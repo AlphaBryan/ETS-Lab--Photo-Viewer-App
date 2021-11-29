@@ -16,7 +16,7 @@ public class MainFrame extends JFrame  {
 	private static final String TITRE_FENETRE = "Laboratoire 3 : LOG121 - Image";
 	private static final Dimension DIMENSION = new Dimension(700, 700);
 	
-	public static MainPanel panneauPrincipal ;
+	private MainPanel panneauPrincipal ;
 	private Translate translate = new Translate() ; 
 
 	private static Toolbar toolbar = new Toolbar();
@@ -65,6 +65,25 @@ public class MainFrame extends JFrame  {
 	 */
 	public void setImgPath(String imgPath) {
 		panneauPrincipal.setPanelsImage(imgPath);
+		repaint();
+	}
+
+
+
+	/** Getter de l'attribut : MainPanel
+	 * @return MainPanel : Instance de l'attribut this.panneauPrincipal
+	 */
+	public  MainPanel getPanneauPrincipal() {
+		return panneauPrincipal;
+	}
+
+
+
+	/** Setter de l'attribtut : this.panneauPrincipal
+	 * @param panneauPrincipal : Nouvelle valeur de l'attribut this.panneauPrincipal 
+	 */
+	public  void setPanneauPrincipal(MainPanel panneauPrincipal) {
+		this.panneauPrincipal = panneauPrincipal;
 		repaint();
 	}
 	

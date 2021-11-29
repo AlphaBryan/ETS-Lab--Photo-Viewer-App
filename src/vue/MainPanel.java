@@ -102,7 +102,8 @@ public class MainPanel extends JPanel{
 	 */
 	public void setpTranslation(PanelTranslation pTranslation) {
 		this.pTranslation = pTranslation;
-	} 
-	
+	}
+
+
 	
 }

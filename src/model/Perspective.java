@@ -81,6 +81,15 @@ public class Perspective extends Observable   implements Serializable {
 		this.positionInPerspective = new Point(150,150) ;
 	}
 
+	/**
+	@see java.lang.Object#toString()
+	**/
+	@Override
+	public String toString() {
+		return this.getClass() + "[sizeInPerspective=" + sizeInPerspective + ", positionInPerspective="
+				+ positionInPerspective + "]";
+	}
+
 
 	
 }

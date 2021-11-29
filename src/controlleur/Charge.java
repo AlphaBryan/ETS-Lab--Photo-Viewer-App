@@ -1,5 +1,7 @@
 package controlleur;
 
+import main.Application;
+
 public class Charge  extends Command{
 	
 	
@@ -14,6 +16,8 @@ public class Charge  extends Command{
 	@Override
 	public void execute() {
 		commandGestion.charge();
+		//savePerspectiveZoom(commandGestion.getPerspectiveZoom());
+		//savePerspectiveTranslation(commandGestion.getPerspectiveTranslation());
 		commandGestion.push(this);
 	}
 }
