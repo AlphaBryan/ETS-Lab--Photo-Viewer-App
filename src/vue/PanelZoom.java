@@ -23,8 +23,8 @@ public class PanelZoom extends JPanel implements Observer {
 	private static final long serialVersionUID = 1L;
 	private static final Point POS_INIT= new Point(3,14);
 
-	private ZoomIn zoomIn = new ZoomIn();
-	private ZoomOut zoomOut = new ZoomOut();
+	private ZoomIn zoomIn;
+	private ZoomOut zoomOut;
 
 
 	/**
@@ -33,20 +33,23 @@ public class PanelZoom extends JPanel implements Observer {
 	 */
 	public PanelZoom( ) {
 		super();
+		zoomIn = new ZoomIn();
+		zoomOut = new ZoomOut();
 		commandGestion.getPerspectiveZoom().addObserver(this);
 		addMouseWheelListener(new MouseWheelListener() {
 			@Override
 			public void mouseWheelMoved(MouseWheelEvent e) {
 				if(e.getWheelRotation()<0){
-					commandGestion.zoomIn();
+					zoomIn.execute();
 				}else{
-					commandGestion.zoomOut();
+					zoomOut.execute();
 				}
 			}
 		});
 		initBorder("Zoom") ;
+
 	}
-	
+
 	/**
 	 * Methode permettant : de
 	 * @param XXX : ___
@@ -74,7 +77,7 @@ public class PanelZoom extends JPanel implements Observer {
 
 
 	}
-	
+
     /**
     @see java.awt.Component#getMousePosition()
     **/
@@ -109,6 +112,7 @@ public class PanelZoom extends JPanel implements Observer {
 	public void update(Observable o, Object arg) {
 		repaint();
 	}
-	
-	
+
+
+
 }
