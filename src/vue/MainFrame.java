@@ -2,6 +2,8 @@ package vue;
 
 import controlleur.Charge;
 import controlleur.Save;
+import controlleur.Translate;
+import controlleur.Undo;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -15,16 +17,20 @@ public class MainFrame extends JFrame  {
 	private static final Dimension DIMENSION = new Dimension(700, 700);
 	
 	public static MainPanel panneauPrincipal ;
+	private Translate translate = new Translate() ; 
 
-	private Toolbar toolbar = new Toolbar();
+	private static Toolbar toolbar = new Toolbar();
+//	private Save save = new Save();
+//	private Charge charge = new Charge();
+//	private Undo undo = new Undo();
 
-	private Save save = new Save();
-	private Charge charge = new Charge();
 
 	public MainFrame() {
 		panneauPrincipal = new MainPanel();
-		Toolbar toolbar = new Toolbar();
+		toolbar = new Toolbar();
 		setUpCommandToolbar();
+		setUpCommandPanels() ; 
+		
 		add(panneauPrincipal);
 		add(toolbar, BorderLayout.NORTH);
 		// Faire en sorte que le X de la fenetre ferme la fen�tre
@@ -42,15 +48,16 @@ public class MainFrame extends JFrame  {
 
 
 	public void setUpCommandToolbar(){
-		System.out.println("ENTERED SET UP COMMAND TOOL BAR");
-		Toolbar.setAction(save);
-		Toolbar.setAction(charge);
-		Toolbar.setUndo();
+		Toolbar.setAction(new Save());
+		Toolbar.setAction(new Charge());
+		Toolbar.setAction(new Undo());
 	}
 
-	/** Getter de l'attribut : String
-	 * @return String : Instance de l'attribut this.imgPath
-	 */
+	
+	public void setUpCommandPanels(){
+		panneauPrincipal.getpTranslation().setAction(translate); ; 
+	}
+	
 
 
 	/** Setter de l'attribtut : this.imgPath

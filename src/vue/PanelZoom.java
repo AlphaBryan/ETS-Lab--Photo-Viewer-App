@@ -45,7 +45,6 @@ public class PanelZoom extends JPanel implements Observer {
 			}
 		});
 		initBorder("Zoom") ;
-
 	}
 	
 	/**

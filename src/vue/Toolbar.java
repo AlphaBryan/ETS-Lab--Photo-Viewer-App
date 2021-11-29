@@ -2,6 +2,7 @@ package vue;
 
 import controlleur.Charge;
 import controlleur.Save;
+import controlleur.Undo;
 
 import java.awt.event.ActionEvent;
 import java.io.File;
@@ -64,6 +65,7 @@ public class Toolbar extends JMenuBar {
 				
 				
 				File selectedFile = fileChooser.getSelectedFile();
+
 				
 				InitPanelsImages(selectedFile.getAbsolutePath()) ;
 			}
@@ -72,14 +74,6 @@ public class Toolbar extends JMenuBar {
 
 
 	}
-
-	public static void setUndo() {
-		undo.addActionListener((ActionEvent e) -> {
-			System.out.println("UNDO");
-		});
-
-	}
-
 	
 	private void InitPanelsImages(String path) {
 		System.out.println(" # Loading Image : " + path);
@@ -88,6 +82,11 @@ public class Toolbar extends JMenuBar {
 
 	}
 
+	public static void setAction(Undo command) {
+		undo.addActionListener((ActionEvent e) -> {
+			command.execute() ; 
+		});
+	}
 
 
 	public static void setAction(Charge command){

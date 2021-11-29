@@ -75,10 +75,16 @@ public class CommandGestion {
 	 * Methode pour récuperer le MainPanel de la derniere commande sauvegarder et la supprimer 
 	 * @return MainPanel : le MainPanel de la derniere instance de commande sauvegardee 
 	 **/
-	public MainPanel undo() {
-		Command lastCommand = pop() ; 
-		MainPanel lastMainPanel = lastCommand.undo() ; 
-		return lastMainPanel ; 
+//	public MainPanel undo() {
+//		Command lastCommand = pop() ; 
+//		MainPanel lastMainPanel = lastCommand.undo() ; 
+//		System.out.println("hello");
+//		return lastMainPanel ; 
+//	}
+	
+	public void undo() {
+		System.out.println("hello");
+		System.out.println("saved command : " + savedCommands);
 	}
 	
 	/**
@@ -131,7 +137,8 @@ public class CommandGestion {
 	/**
 	 * Methode pour executer la commande Translation
 	 **/
-	public void translation() {
+	public void translation(int x, int y) {
+		commandGestion.getPerspectiveTranslation().setPositionInPerspective(new Point(x,y)) ;
 		perspectiveTranslation.notifyObservers();
 	}
 

@@ -15,16 +15,11 @@ public class Perspective extends Observable   implements Serializable {
 	private boolean focus = true ; 
 
 	private Observer observer;
-	
-	public Perspective(Images imagePerspective){
-		this.imagePerspective= imagePerspective;
-		this.sizeInPerspective = new Point(-1,-1) ;
-		this.positionInPerspective = new Point(-1,-1) ; 
-	}
+
 
 	public Perspective(){
-		this.sizeInPerspective = new Point(200,200) ;
-		this.positionInPerspective = new Point(0,0) ;
+		this.sizeInPerspective = new Point(-1,-1) ;
+		this.positionInPerspective = new Point(-1,-1) ;
 	}
 
 	public Images getImagePerspective() {
@@ -33,6 +28,7 @@ public class Perspective extends Observable   implements Serializable {
 
 
 	public void setImagePerspective(Images imagePerspective) {
+		initPositionAndSize();
 		this.imagePerspective = imagePerspective;
 	}
 
@@ -80,6 +76,11 @@ public class Perspective extends Observable   implements Serializable {
 	}
 
 	
+	public void initPositionAndSize() {
+		this.sizeInPerspective = new Point(200,200) ;
+		this.positionInPerspective = new Point(150,150) ;
+	}
+
 
 	
 }
