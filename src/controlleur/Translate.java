@@ -51,13 +51,5 @@ public class Translate extends Command {
 		return "Translate[ Old{"+ this.oldPerspective.getPositionInPerspective().x +";"+ this.oldPerspective.getPositionInPerspective().y+ "}->{" +newX + ";" + newY + "}]" ; 		
 	}
 
-	/**
-	@see controlleur.Command#clone()
-	**/
-	@Override
-	public Command clone() {
-		Translate t = new Translate() ;
-		t.setSnapshot(oldPerspective);
-		return t;
-	}
+
 }

@@ -18,6 +18,9 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.TimerTask;
 import java.util.Timer;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
 
 public class PanelTranslation extends JPanel implements Observer {
 

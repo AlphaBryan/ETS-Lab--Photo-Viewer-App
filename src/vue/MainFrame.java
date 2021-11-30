@@ -43,6 +43,7 @@ public class MainFrame extends JFrame  {
 		Toolbar.setAction(new Save());
 		Toolbar.setAction(new Charge());
 		Toolbar.setAction(new Undo());
+		Toolbar.setAction(new Redo()) ; 
 	}
 
 	

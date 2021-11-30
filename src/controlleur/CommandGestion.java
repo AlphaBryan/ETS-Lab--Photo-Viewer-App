@@ -36,10 +36,13 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
 
 public class CommandGestion {
+	/**
+	 * Repair bug : quand on click sur translate on part a -1 -1 */
 	
 	private static CommandGestion commandGestion ; 
 	
 	private Stack<Perspective> historic = new Stack<Perspective>() ;
+	private Stack<Perspective> future = new Stack<Perspective>() ;
 
 
 	private Perspective perspectiveStatic =new Perspective();
@@ -75,25 +78,56 @@ public class CommandGestion {
 		p.setSizeInPerspective(command.getSnapshot().getSizeInPerspective());
 		historic.add(p) ; 
 	}
+
+	public void pushRedo() {
+		Perspective futureRedo = new Perspective() ; 
+		futureRedo.setSizeInPerspective(perspectiveZoom.getSizeInPerspective()); //Problem redo
+//		futureRedo.setSizeInPerspective(new Point(100,100));
+		futureRedo.setPositionInPerspective(perspectiveTranslation.getPositionInPerspective());
+		future.add(futureRedo) ;    
+		System.out.println("f :" + future);
+	}
 	
 	/**  
 	 * Methode pour récuperer les derniers parametre de notre vue
 	 * @return Command : derniere instance de commande sauvegardee 
 	 **/
-	public Perspective pop1() {
-		return historic.pop() ;
+	public Perspective pop() {
+		Perspective popped = historic.pop(); 
+		return popped ;
 	}
 
 
 	public void undo() {
 		if (historic.size()>0) {
-			Perspective snapshot = pop1(); 
+			Perspective snapshot = pop(); 
+			pushRedo() ; 
+			perspectiveZoom.setSizeInPerspective(snapshot.getSizeInPerspective()); //Probleme redo
+		//	perspectiveZoom.setSizeInPerspective(new Point(100,100));
+			perspectiveTranslation.setPositionInPerspective(snapshot.getPositionInPerspective());		
+			perspectiveZoom.notifyObservers();
+			perspectiveTranslation.notifyObservers();
+		}
+	}
+	
+	/**
+	 * Methode permettant : de
+	 * @param XXX : ___
+	 * @return void
+	 */
+	public void redo() {
+		System.out.println("ggg");
+		if (future.size()>0) {
+			System.out.println("not empty");
+			Perspective snapshot = future.pop();
+			System.out.println("s :"+snapshot);
 			perspectiveZoom.setSizeInPerspective(snapshot.getSizeInPerspective());
 			perspectiveTranslation.setPositionInPerspective(snapshot.getPositionInPerspective());
 			perspectiveZoom.notifyObservers();
 			perspectiveTranslation.notifyObservers();
 		}
-	}
+		
+	} 
 	
 	/**
 	 * Methode pour executer la commande Charge
@@ -176,5 +210,7 @@ public class CommandGestion {
 	public Perspective getPerspectiveZoom() {
 		return perspectiveZoom;
 	}
+
+
 
 }

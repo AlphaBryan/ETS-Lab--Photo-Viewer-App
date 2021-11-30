@@ -1,6 +1,7 @@
 package vue;
 
 import controlleur.Charge;
+import controlleur.Redo;
 import controlleur.Save;
 import controlleur.Undo;
 
@@ -13,6 +14,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.event.MenuKeyEvent;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
 
@@ -27,6 +29,7 @@ public class Toolbar extends JMenuBar {
 	private static final String TOOLBAR_CHARGER_FICHIER = "Charger";
 	private static final String TOOLBAR_COMMAND = "Command";
 	private static final String TOOLBAR_UNDO = "Undo";
+	private static final String TOOLBAR_REDO = "Redo";
 
 
 	private JMenu fichier = new JMenu(TOOLBAR_TITRE_FICHIER);
@@ -36,12 +39,16 @@ public class Toolbar extends JMenuBar {
 
 	private JMenu command =  new JMenu(TOOLBAR_COMMAND);
 	private static JMenuItem undo = new JMenuItem(TOOLBAR_UNDO);
+	private static JMenuItem redo = new JMenuItem(TOOLBAR_REDO);
+
 
 	public Toolbar() {
 		fichier.add(nouvelleImage);
 		fichier.add(charger) ;
 		fichier.add(sauvegarder) ;
 		command.add(undo) ;
+		command.add(redo) ;
+
 		add(fichier);
 		add(command);
 		ajouterMenuFichier();
@@ -89,6 +96,11 @@ public class Toolbar extends JMenuBar {
 		});
 	}
 
+	public static void setAction(Redo command) {
+		redo.addActionListener((ActionEvent e) -> {
+			command.execute() ; 			
+		});
+	}
 
 	public static void setAction(Charge command){
 		charger.addActionListener((ActionEvent e) -> {
