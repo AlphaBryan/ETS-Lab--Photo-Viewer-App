@@ -1,9 +1,6 @@
 package vue;
 
-import controlleur.Charge;
-import controlleur.Save;
-import controlleur.Translate;
-import controlleur.Undo;
+import controlleur.*;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -17,20 +14,15 @@ public class MainFrame extends JFrame  {
 	private static final Dimension DIMENSION = new Dimension(700, 700);
 	
 	private MainPanel panneauPrincipal ;
-	private Translate translate = new Translate() ; 
-
 	private static Toolbar toolbar = new Toolbar();
-//	private Save save = new Save();
-//	private Charge charge = new Charge();
-//	private Undo undo = new Undo();
+
 
 
 	public MainFrame() {
 		panneauPrincipal = new MainPanel();
 		toolbar = new Toolbar();
 		setUpCommandToolbar();
-		setUpCommandPanels() ; 
-		
+		setUpCommandPanels() ;
 		add(panneauPrincipal);
 		add(toolbar, BorderLayout.NORTH);
 		// Faire en sorte que le X de la fenetre ferme la fen�tre
@@ -55,7 +47,8 @@ public class MainFrame extends JFrame  {
 
 	
 	public void setUpCommandPanels(){
-		panneauPrincipal.getpTranslation().setAction(translate); ; 
+		panneauPrincipal.getpTranslation().setAction(new Translate());
+		panneauPrincipal.getpZoom().setAction(new Zoom());
 	}
 	
 

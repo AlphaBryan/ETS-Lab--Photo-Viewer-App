@@ -71,40 +71,22 @@ public class CommandGestion {
 		return savedCommands.pop();
 	}
 	
-	/**
-	 * Methode pour récuperer le MainPanel de la derniere commande sauvegarder et la supprimer 
-	 * @return MainPanel : le MainPanel de la derniere instance de commande sauvegardee 
-	 **/
-//	public MainPanel undo() {
-//		Command lastCommand = pop() ; 
-//		MainPanel lastMainPanel = lastCommand.undo() ; 
-//		System.out.println("hello");
-//		return lastMainPanel ; 
-//	}
-	
+
+
 	public void undo() {
 		System.out.println("Undo launched");
-		//NUG ACTUAL AND LAST ARE EQUAL
-
-
-		System.out.println("saved command : " + savedCommands);
-		Point myposition = perspectiveTranslation.getPositionInPerspective() ; 
-		System.out.println("Actual Position : "+ myposition) ;
 
 		if (savedCommands.size()>0) {
 			Command lastCommand = pop() ;
- 
-			
-			//get lastcommadState
-			Point lastPosition = lastCommand.getPerspectiveTranslation().getPositionInPerspective() ; 
-			Point lastSize = lastCommand.getPerspectiveZoom().getSizeInPerspective() ; 
-			
+			System.out.println(lastCommand);
+
+			Point lastPosition = new Point(lastCommand.getOldTX(),lastCommand.getOldTY());
+			Point lastSize = new Point(lastCommand.getOldZX(),lastCommand.getOldZY()) ;
+
 			System.out.println("Last Position : "+ lastPosition) ;
-			//perspectiveZoom = lastCommand.getPerspectiveZoom() ; 
-			//Good 
-			perspectiveZoom.setSizeInPerspective(new Point(100, 100));
-			perspectiveTranslation.setPositionInPerspective(new Point(150, 150)) ;
-			System.out.println("New  Position : "+ 150 + ';'+150) ;
+			System.out.println("Last Size : "+ lastSize);
+			perspectiveZoom.setSizeInPerspective(lastSize);
+			perspectiveTranslation.setPositionInPerspective(lastPosition);
 
 			perspectiveZoom.notifyObservers();
 			perspectiveTranslation.notifyObservers();
@@ -141,25 +123,26 @@ public class CommandGestion {
 	/**
 	 * Methode pour executer la commande Zoom
 	 **/
-	public void zoomIn() {
+	public void zoom(String inOrOut) {
 		int x=perspectiveZoom.getSizeInPerspective().x;
 		int y=perspectiveZoom.getSizeInPerspective().y;
-		x=x+10;
-		y=y+10;
-		perspectiveZoom.setSizeInPerspective(new Point(x,y));
-		perspectiveZoom.notifyObservers();
-	}
-
-	public void zoomOut() {
-		int x=perspectiveZoom.getSizeInPerspective().x;
-		int y=perspectiveZoom.getSizeInPerspective().y;
-		x=x-10;
-		y=y-10;
-		if(x>0 && y>0) {
+		if(inOrOut.equals("in")) {
+			x = x + 25;
+			y = y + 25;
 			perspectiveZoom.setSizeInPerspective(new Point(x, y));
 			perspectiveZoom.notifyObservers();
 		}
+		else if(inOrOut.equals("out")){
+			x=x-25;
+			y=y-25;
+			if(x>0 && y>0) {
+				perspectiveZoom.setSizeInPerspective(new Point(x, y));
+				perspectiveZoom.notifyObservers();
+			}
+		}
 	}
+
+
 	/**
 	 * Methode pour executer la commande Translation
 	 **/

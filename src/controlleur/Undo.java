@@ -18,7 +18,6 @@ public class Undo extends Command {
 	@Override
 	public void execute() {
 		commandGestion.undo();
-		//commandGestion.push(this); Need this for the redo command
 	}
 
 }

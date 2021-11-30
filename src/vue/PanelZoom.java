@@ -1,10 +1,8 @@
 package vue;
 
 import controlleur.CommandGestion;
-import controlleur.ZoomIn;
-import controlleur.ZoomOut;
+import controlleur.Zoom;
 import model.Images;
-import model.Perspective;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -23,8 +21,7 @@ public class PanelZoom extends JPanel implements Observer {
 	private static final long serialVersionUID = 1L;
 	private static final Point POS_INIT= new Point(3,14);
 
-	private ZoomIn zoomIn;
-	private ZoomOut zoomOut;
+
 
 
 	/**
@@ -33,19 +30,7 @@ public class PanelZoom extends JPanel implements Observer {
 	 */
 	public PanelZoom( ) {
 		super();
-		zoomIn = new ZoomIn();
-		zoomOut = new ZoomOut();
 		commandGestion.getPerspectiveZoom().addObserver(this);
-		addMouseWheelListener(new MouseWheelListener() {
-			@Override
-			public void mouseWheelMoved(MouseWheelEvent e) {
-				if(e.getWheelRotation()<0){
-					zoomIn.execute();
-				}else{
-					zoomOut.execute();
-				}
-			}
-		});
 		initBorder("Zoom") ;
 
 	}
@@ -113,6 +98,20 @@ public class PanelZoom extends JPanel implements Observer {
 		repaint();
 	}
 
-
+	public void setAction(Zoom command){
+		addMouseWheelListener(new MouseWheelListener() {
+			@Override
+			public void mouseWheelMoved(MouseWheelEvent e) {
+				command.setOldZX(commandGestion.getPerspectiveZoom().getSizeInPerspective().x);
+				command.setOldZY(commandGestion.getPerspectiveZoom().getSizeInPerspective().y);
+				if(e.getWheelRotation()<0){
+					command.setAttribute("in");
+				}else{
+					command.setAttribute("out");
+				}
+				command.execute();
+			}
+		});
+	}
 
 }

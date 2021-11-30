@@ -12,7 +12,6 @@ public class Perspective extends Observable   implements Serializable {
 	private Images imagePerspective ;
 	private Point sizeInPerspective ;
 	private Point positionInPerspective ;
-	private boolean focus = true ; 
 
 	private Observer observer;
 
@@ -61,21 +60,7 @@ public class Perspective extends Observable   implements Serializable {
 		observer.update(this, null);
 	}
 
-	/** Getter de l'attribut : boolean
-	 * @return boolean : Instance de l'attribut this.focus
-	 */
-	public boolean isFocus() {
-		return focus;
-	}
 
-	/** Setter de l'attribtut : this.focus
-	 * @param focus : Nouvelle valeur de l'attribut this.focus 
-	 */
-	public void setFocus(boolean focus) {
-		this.focus = focus;
-	}
-
-	
 	public void initPositionAndSize() {
 		this.sizeInPerspective = new Point(200,200) ;
 		this.positionInPerspective = new Point(150,150) ;
@@ -89,7 +74,6 @@ public class Perspective extends Observable   implements Serializable {
 		return this.getClass() + "[sizeInPerspective=" + sizeInPerspective + ", positionInPerspective="
 				+ positionInPerspective + "]";
 	}
-
 
 	
 }

@@ -6,17 +6,14 @@ import model.Perspective;
 import vue.MainPanel;
 
 public abstract class  Command {
+	private boolean enable ;
 
-	protected MainPanel mainPanel ; // Cant be that 
-	
-	protected Perspective perspectiveTranslation ;
-	protected Perspective perspectiveZoom ;
-	
-	private boolean enable ; 
-	
-	protected Hashtable<String, Perspective> perspectives = new Hashtable<String, Perspective>();
+	private int oldTX ;
+	private int oldTY ;
 
-	
+	private int oldZX ;
+	private int oldZY ;
+
 	protected CommandGestion commandGestion = CommandGestion.getInstance();
 	
 	/**
@@ -32,53 +29,6 @@ public abstract class  Command {
 	 */
 	public abstract void execute();
 
-
-	
-	/**
-	 * Methode permettant : de sauvegarder un MainPanel  
-	 * @param mainPanel : le mainPanel a changer 
-	 */
-	public void saveMainPanel(MainPanel mainPanel) {
-		this.mainPanel = mainPanel;
-	}
-	
-	/**
-	 * Methode permettant : de retourner notre  mainPanel  
-	 * @return MainPanel
-	 */
-	public MainPanel undo() {
-		return mainPanel;
-	}
-
-
-	/** Getter de l'attribut : Perspective
-	 * @return Perspective : Instance de l'attribut this.perspectiveTranslation
-	 */
-	public Perspective getPerspectiveTranslation() {
-		return perspectives.get("Translate");
-	}
-
-	/** Setter de l'attribtut : this.perspectiveTranslation
-	 * @param perspectiveTranslation : Nouvelle valeur de l'attribut this.perspectiveTranslation 
-	 */
-	public void savePerspectiveTranslation(Perspective perspectiveTranslation) {
-		perspectives.put("Translate", perspectiveTranslation) ; 
-	}
-
-	/** Getter de l'attribut : Perspective
-	 * @return Perspective : Instance de l'attribut this.perspectiveZoom
-	 */
-	public Perspective getPerspectiveZoom() {
-		return perspectives.get("Zoom");
-	}
-
-	/** Setter de l'attribtut : this.perspectiveZoom
-	 * @param perspectiveZoom : Nouvelle valeur de l'attribut this.perspectiveZoom 
-	 */
-	public void savePerspectiveZoom(Perspective perspectiveZoom) {
-		perspectives.put("Zoom", perspectiveZoom) ; 
-
-	}
 
 	/** Getter de l'attribut : boolean
 	 * @return boolean : Instance de l'attribut this.enable
@@ -100,10 +50,35 @@ public abstract class  Command {
 	public void setOFF() {
 		this.enable = false;
 	}
-	
-	
-	
-		
-	
 
+	public void setOldTX(int oldX) {
+		this.oldTX = oldX;
+	}
+	public void setOldTY(int oldY) {
+		this.oldTY = oldY;
+	}
+
+	public int getOldTX() {
+		return oldTX;
+	}
+
+	public int getOldTY() {
+		return oldTY;
+	}
+
+	public void setOldZX(int oldZX) {
+		this.oldZX = oldZX;
+	}
+
+	public void setOldZY(int oldZY) {
+		this.oldZY = oldZY;
+	}
+
+	public int getOldZX() {
+		return oldZX;
+	}
+
+	public int getOldZY() {
+		return oldZY;
+	}
 }

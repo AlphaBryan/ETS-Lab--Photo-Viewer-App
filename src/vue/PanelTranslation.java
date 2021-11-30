@@ -114,13 +114,14 @@ public class PanelTranslation extends JPanel implements Observer {
 	 * @return void 
 	 */
 	public void setAction(Translate command) {
+
 		this.addMouseMotionListener(new MouseMotionListener() {
 
 			@Override
 			public void mouseDragged(MouseEvent e) {
 				command.setON();
-				command.setX(e.getPoint().x);
-				command.setY(e.getPoint().y);
+				command.setNewX(e.getPoint().x);
+				command.setNewY(e.getPoint().y);
 				command.execute();
 			}
 
@@ -138,6 +139,9 @@ public class PanelTranslation extends JPanel implements Observer {
 
 			@Override
 			public void mousePressed(MouseEvent e) {
+				command.setOldTX(commandGestion.getPerspectiveTranslation().getPositionInPerspective().x);
+				command.setOldTY(commandGestion.getPerspectiveTranslation().getPositionInPerspective().y);
+
 			}
 
 			@Override
