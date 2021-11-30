@@ -5,6 +5,8 @@ import java.util.Hashtable;
 import model.Perspective;
 import vue.MainPanel;
 
+import java.io.IOException;
+
 public abstract class  Command {
 	private boolean enable ;
 
@@ -27,7 +29,7 @@ public abstract class  Command {
 	/**
 	 * Methode permettant : d'executer notre commande 
 	 */
-	public abstract void execute();
+	public abstract void execute() ;
 
 
 	/** Getter de l'attribut : boolean

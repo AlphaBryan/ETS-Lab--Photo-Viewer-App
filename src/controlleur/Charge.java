@@ -1,6 +1,10 @@
 package controlleur;
 
+
 import main.Application;
+
+import java.io.IOException;
+
 
 public class Charge  extends Command{
 	

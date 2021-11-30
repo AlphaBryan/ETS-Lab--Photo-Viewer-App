@@ -8,10 +8,19 @@ import java.awt.image.ImageProducer;
 import java.awt.image.RenderedImage;
 import java.io.*;
 import java.nio.Buffer;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.Scanner;
+import java.util.*;
+
+import Tools.*;
+
+import javax.xml.parsers.*;
+import javax.xml.transform.*;
+import javax.xml.transform.dom.*;
+import javax.xml.transform.stream.*;
+
+import model.Images;
+import org.xml.sax.*;
+import org.w3c.dom.*;
+
 
 import main.Application;
 import model.Perspective;
@@ -98,26 +107,24 @@ public class CommandGestion {
 	/**
 	 * Methode pour executer la commande Charge
 	 **/
-	public void charge() {
+	public void charge()  {
+		XmlFile xmlFile= new XmlFile();
+		Hashtable <String, String > info = xmlFile.readXML(".\\test\\infos.xml");
+		Images image = new Images(info.get("path"));
+		perspectiveStatic.setImagePerspective(image);
+		perspectiveTranslation.setImagePerspective(image);
+		perspectiveZoom.setImagePerspective(image);
+		Point lastPosition = new Point(Integer.parseInt(info.get("positionX")),Integer.parseInt(info.get("positionY")));
+		Point lastSize = new Point(Integer.parseInt(info.get("sizeX")),Integer.parseInt(info.get("sizeY"))) ;
 
-			JFileChooser fileChooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
-			fileChooser.setDialogTitle("Selectionnez une  image    : ");
-			fileChooser.setAcceptAllFileFilterUsed(false);
-			// Creer un filtre
-			FileNameExtensionFilter filtre = new FileNameExtensionFilter(".png", "png");
-			fileChooser.addChoosableFileFilter(filtre);
+		System.out.println("Last Position : "+ lastPosition) ;
+		System.out.println("Last Size : "+ lastSize);
+		perspectiveZoom.setSizeInPerspective(lastSize);
+		perspectiveTranslation.setPositionInPerspective(lastPosition);
+        perspectiveStatic.notifyObservers();
+		perspectiveZoom.notifyObservers();
+		perspectiveTranslation.notifyObservers();
 
-			int returnValue = fileChooser.showOpenDialog(null);
-
-			if (returnValue == JFileChooser.APPROVE_OPTION) {
-
-				File selectedFile = fileChooser.getSelectedFile();
-				Application.getMainFrame().setImgPath(selectedFile.getPath());
-                this.pop();
-                perspectiveTranslation.notifyObservers();
-                perspectiveZoom.notifyObservers();
-
-			}
 
 	}
 	/**
@@ -151,26 +158,17 @@ public class CommandGestion {
 		perspectiveTranslation.notifyObservers();
 	}
 
-	public void save( ) {
 
-         ArrayList <Perspective > listePerspective = new ArrayList<Perspective>();
-		try {
-
-            File fichierImage = new File(perspectiveStatic.getImagePerspective().getPath());
-            listePerspective.add(perspectiveStatic);
-            listePerspective.add(perspectiveZoom);
-            listePerspective.add(perspectiveTranslation);
-            BufferedImage image = ImageIO.read(fichierImage);
-            BufferedImage imageTranslation = ImageIO.read(fichierImage);
-            ImageIO.write(image, "png",fichierImage);
-
-
-
-
-		} catch (IOException i) {
-			i.printStackTrace();
-		}
+	public void save(){
+		XmlFile xmlFile= new XmlFile();
+		xmlFile.setPath(perspectiveStatic.getImagePerspective().getPath());
+		xmlFile.setPositionX(String.valueOf(perspectiveTranslation.getPositionInPerspective().x));
+		xmlFile.setPositionY(String.valueOf(perspectiveTranslation.getPositionInPerspective().y));
+		xmlFile.setSizeX(String.valueOf(perspectiveZoom.getSizeInPerspective().x));
+		xmlFile.setSizeY(String.valueOf(perspectiveZoom.getSizeInPerspective().y));
+		xmlFile.saveToXML(".\\test\\infos.xml");
 	}
+
 
 
 
