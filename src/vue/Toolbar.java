@@ -79,7 +79,7 @@ public class Toolbar extends JMenuBar {
 	private void InitPanelsImages(String path) {
 		System.out.println(" # Loading Image : " + path);
 		Application.getMainFrame().setImgPath(path);
-		System.out.println(" # Image succesfully Loaded ");
+		System.out.println(" # Image succesfully Loaded \n");
 
 	}
 

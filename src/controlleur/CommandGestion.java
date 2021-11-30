@@ -38,7 +38,9 @@ import javax.swing.filechooser.FileSystemView;
 public class CommandGestion {
 	
 	private static CommandGestion commandGestion ; 
-	private static Deque<Command> savedCommands;
+	
+	private Stack<Perspective> historic = new Stack<Perspective>() ;
+
 
 	private Perspective perspectiveStatic =new Perspective();
 	private Perspective perspectiveTranslation =new Perspective();
@@ -50,7 +52,6 @@ public class CommandGestion {
 	 * Constructeur de notre gestionnaire de commande
 	 **/
 	private CommandGestion() {
-		this.savedCommands = new ArrayDeque<Command>() ;
 	}
 
 	/**
@@ -69,39 +70,29 @@ public class CommandGestion {
 	 * @param command : Nouvelle instance de Commande a rajouter a notre sauvegarde de commande  
 	 **/
 	public void push(Command command) {
-		savedCommands.push(command);
+		Perspective p = new Perspective() ; 
+		p.setPositionInPerspective(command.getSnapshot().getPositionInPerspective());
+		p.setSizeInPerspective(command.getSnapshot().getSizeInPerspective());
+		historic.add(p) ; 
 	}
 	
-	/**
-	 * Methode pour récuperer la derniere commande sauvegarder et la supprimer 
+	/**  
+	 * Methode pour récuperer les derniers parametre de notre vue
 	 * @return Command : derniere instance de commande sauvegardee 
 	 **/
-	public Command pop() {
-		return savedCommands.pop();
+	public Perspective pop1() {
+		return historic.pop() ;
 	}
-	
 
 
 	public void undo() {
-		System.out.println("Undo launched");
-
-		if (savedCommands.size()>0) {
-			Command lastCommand = pop() ;
-			System.out.println(lastCommand);
-
-			Point lastPosition = new Point(lastCommand.getOldTX(),lastCommand.getOldTY());
-			Point lastSize = new Point(lastCommand.getOldZX(),lastCommand.getOldZY()) ;
-
-			System.out.println("Last Position : "+ lastPosition) ;
-			System.out.println("Last Size : "+ lastSize);
-			perspectiveZoom.setSizeInPerspective(lastSize);
-			perspectiveTranslation.setPositionInPerspective(lastPosition);
-
+		if (historic.size()>0) {
+			Perspective snapshot = pop1(); 
+			perspectiveZoom.setSizeInPerspective(snapshot.getSizeInPerspective());
+			perspectiveTranslation.setPositionInPerspective(snapshot.getPositionInPerspective());
 			perspectiveZoom.notifyObservers();
 			perspectiveTranslation.notifyObservers();
 		}
-
-
 	}
 	
 	/**
@@ -147,8 +138,9 @@ public class CommandGestion {
 				perspectiveZoom.notifyObservers();
 			}
 		}
-	}
 
+	}
+ 
 
 	/**
 	 * Methode pour executer la commande Translation
@@ -156,6 +148,7 @@ public class CommandGestion {
 	public void translation(int x, int y) {
 		perspectiveTranslation.setPositionInPerspective(new Point(x,y)) ;
 		perspectiveTranslation.notifyObservers();
+
 	}
 
 

@@ -139,9 +139,7 @@ public class PanelTranslation extends JPanel implements Observer {
 
 			@Override
 			public void mousePressed(MouseEvent e) {
-				command.setOldTX(commandGestion.getPerspectiveTranslation().getPositionInPerspective().x);
-				command.setOldTY(commandGestion.getPerspectiveTranslation().getPositionInPerspective().y);
-
+				command.snapshotPerspesctives();
 			}
 
 			@Override

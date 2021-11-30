@@ -102,8 +102,7 @@ public class PanelZoom extends JPanel implements Observer {
 		addMouseWheelListener(new MouseWheelListener() {
 			@Override
 			public void mouseWheelMoved(MouseWheelEvent e) {
-				command.setOldZX(commandGestion.getPerspectiveZoom().getSizeInPerspective().x);
-				command.setOldZY(commandGestion.getPerspectiveZoom().getSizeInPerspective().y);
+				command.snapshotPerspesctives();
 				if(e.getWheelRotation()<0){
 					command.setAttribute("in");
 				}else{

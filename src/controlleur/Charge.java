@@ -24,4 +24,6 @@ public class Charge  extends Command{
 		//savePerspectiveTranslation(commandGestion.getPerspectiveTranslation());
 		commandGestion.push(this);
 	}
+
+
 }

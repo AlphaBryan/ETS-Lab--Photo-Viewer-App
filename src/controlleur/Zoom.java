@@ -22,4 +22,11 @@ public class Zoom extends Command {
     public void setAttribute(String attribute) {
         this.inOrOut = attribute;
     }
+    
+    
+	@Override
+	public String toString() {
+		return "Zoom[From {"+ this.oldPerspective.getSizeInPerspective().x +";"+ this.oldPerspective.getSizeInPerspective().y+ "}]" ; 		
+	}
+
 }

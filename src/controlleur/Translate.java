@@ -23,7 +23,6 @@ public class Translate extends Command {
 		commandGestion.translation(newX,newY);
 
 		if(!isEnable()) {
-			System.out.println(commandGestion.getPerspectiveTranslation().getPositionInPerspective());
 			commandGestion.push(this);
 		}
 
@@ -49,9 +48,16 @@ public class Translate extends Command {
 
 	@Override
 	public String toString() {
-		return "Translate{" +
-				", newX=" + newX +
-				", newY=" + newY +
-				'}';
+		return "Translate[ Old{"+ this.oldPerspective.getPositionInPerspective().x +";"+ this.oldPerspective.getPositionInPerspective().y+ "}->{" +newX + ";" + newY + "}]" ; 		
+	}
+
+	/**
+	@see controlleur.Command#clone()
+	**/
+	@Override
+	public Command clone() {
+		Translate t = new Translate() ;
+		t.setSnapshot(oldPerspective);
+		return t;
 	}
 }
