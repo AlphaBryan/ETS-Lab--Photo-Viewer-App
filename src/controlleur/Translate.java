@@ -1,5 +1,9 @@
 package controlleur;
-
+/**
+ * méthode qui éxécute la commande de translater une image
+ * newY : nouvelle coordonnée de l'image translatée
+ * newX :  nouvelle abcisse  de l'image translatée
+ **/
 public class Translate extends Command {
 
 
@@ -7,7 +11,7 @@ public class Translate extends Command {
 	private int newY = -1 ;
 	
 	/**
-	 * Construteur de la classe Translate.java
+	 * Construteur de la classe Translate qui hérite de la classe Commande
 	 */
 	public Translate() {
 		super();
@@ -15,7 +19,7 @@ public class Translate extends Command {
 	}
 
 	/**
-	@see controlleur.Command#execute()
+	*méthode qui éxécute la commande de translater une image
 	**/
 	@Override
 	public void execute() {

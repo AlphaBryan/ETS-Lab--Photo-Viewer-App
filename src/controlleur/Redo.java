@@ -1,10 +1,13 @@
 package controlleur;
-
+/**
+ * classe qui implémente l'action de redo une action
+ * et hérite de la classe command
+ */
 public class Redo extends  Command {
 
 	/**
-	@see controlleur.Command#execute()
-	**/
+	 * constructeur de la classe Redo  qui appel le constructeur de la classe mère
+	 */
 	@Override
 	public void execute() {
 		commandGestion.redo();

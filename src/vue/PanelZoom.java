@@ -26,7 +26,6 @@ public class PanelZoom extends JPanel implements Observer {
 
 	/**
 	 * Construteur de la classe PanelStatic.java
-	 * @param XXX : ___
 	 */
 	public PanelZoom( ) {
 		super();
@@ -36,8 +35,8 @@ public class PanelZoom extends JPanel implements Observer {
 	}
 
 	/**
-	 * Methode permettant : de
-	 * @param XXX : ___
+	 * Methode permettant d'initialiser la bordure du panneau
+	 *
 	 */
 	private void initBorder(String panelType) {
 		Border blackline = BorderFactory.createLineBorder(Color.black);
@@ -47,7 +46,7 @@ public class PanelZoom extends JPanel implements Observer {
 	}
 
 	/**
-	 @see javax.swing.JComponent#paint(java.awt.Graphics)
+	 *Méthode qui permet d'afficher les éléments graphique dans le panneau
 	 **/
 	@Override
 	public void paint(Graphics g) {
@@ -64,7 +63,8 @@ public class PanelZoom extends JPanel implements Observer {
 	}
 
     /**
-    @see java.awt.Component#getMousePosition()
+	 * Méthode qui permet d'obtenir la positiond de la souris
+	 * et qui retourne un point déterminant les coordonnées du pointeur de la souris
     **/
     @Override
     public Point getMousePosition()  {
@@ -92,12 +92,20 @@ public class PanelZoom extends JPanel implements Observer {
 		commandGestion.getPerspectiveZoom().setImagePerspective(new Images(imagePath));
 	}
 
-
+	/**
+	 * méthode qui permet de faire la mise  à jour de l'affichage dans la vue
+	 * @param o : observateur qui va faire la mise à jour de l'affichage dans la vue
+	 * @param arg
+	 */
 	@Override
 	public void update(Observable o, Object arg) {
 		repaint();
 	}
 
+	/**
+	 * Méthode qui permet d'implémenter l'action de zoomer
+	 * @param command
+	 */
 	public void setAction(Zoom command){
 		addMouseWheelListener(new MouseWheelListener() {
 			@Override

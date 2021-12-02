@@ -5,6 +5,12 @@ import java.awt.Toolkit;
 import java.io.File;
 import java.io.Serializable;
 
+/**
+ * classe image représente les images dans l'application
+ * attributs :
+ * path : représentant le chemin du fichier image
+ * img : représentant l'image
+ */
 public class Images implements  Serializable {
 	
 	String path ;

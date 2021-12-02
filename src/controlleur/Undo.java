@@ -1,5 +1,8 @@
 package controlleur;
-
+/**
+ * classe qui implémente la commande  de défaire une action
+ * et hérite de la classe command
+ */
 public class Undo extends Command {
 
 	
@@ -13,8 +16,8 @@ public class Undo extends Command {
 	}
 
 	/**
-	@see controlleur.Command#execute()
-	**/
+	 * méthode qui éxécute la commande de défaire une action
+	 **/
 	@Override
 	public void execute() {
 		commandGestion.undo();

@@ -35,12 +35,21 @@ import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
 
+/**
+ * classe qui représente le gestionnaire de commandes
+ * attributs :
+ * historique : stack qui représente l'historique
+ * future : stack qui représente les actions qui ont été défaites
+ * perspectiveStatic  : perspective qui représente l'image statique
+ * perspectiveTranslation : perspective qui représente l'image translatée
+ * perspectiveZoom : perspective qui représente l'image zoomée
+ */
+
 public class CommandGestion {
-	/**
-	 * Repair bug : quand on click sur translate on part a -1 -1 */
+
 	
-	private static CommandGestion commandGestion ; 
-	
+	private static CommandGestion commandGestion ;
+
 	private Stack<Perspective> historic = new Stack<Perspective>() ;
 	private Stack<Perspective> future = new Stack<Perspective>() ;
 
@@ -79,6 +88,9 @@ public class CommandGestion {
 		historic.add(p) ; 
 	}
 
+	/**
+	 * Méthode pour mettre une action qui a été défaite dans une liste pour la sauvegarder
+	 */
 	public void pushRedo() {
 		Perspective futureRedo = new Perspective() ; 
 		futureRedo.setSizeInPerspective(perspectiveZoom.getSizeInPerspective()); //Problem redo
@@ -96,7 +108,9 @@ public class CommandGestion {
 		return popped ;
 	}
 
-
+	/**
+	 * méthodes pour défaire une action
+	 */
 	public void undo() {
 		if (historic.size()>0) {
 			Perspective snapshot = pop(); 
@@ -110,8 +124,7 @@ public class CommandGestion {
 	}
 	
 	/**
-	 * Methode permettant : de
-	 * @param XXX : ___
+	 * Methode permettant de refaire une action
 	 * @return void
 	 */
 	public void redo() {
@@ -184,7 +197,9 @@ public class CommandGestion {
 
 	}
 
-
+	/**
+	 * Methode pour executer la commande sauvegarder
+	 */
 	public void save(){
 		XmlFile xmlFile= new XmlFile();
 		xmlFile.setPath(perspectiveStatic.getImagePerspective().getPath());
@@ -196,8 +211,10 @@ public class CommandGestion {
 	}
 
 
-
-
+	/**
+	 * getters des attributs privés qui représentent  les 3 perspectives de l'application
+	 * @return
+	 */
 	public Perspective getPerspectiveStatic() {
 		return perspectiveStatic;
 	}

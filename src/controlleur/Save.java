@@ -1,19 +1,21 @@
 package controlleur;
-
+/**
+ * constructeur de la classe Save  qui appel le constructeur de la classe mère
+ */
 public class Save extends  Command{
 
 	/**
-	 * Construteur de la classe Save.java
+	 * Construteur de la classe Save qui hérite de la classe mère
 	 *
 	 */
 	public Save() {
 		super();
 
 	}
-	
+
 	/**
-	@see controlleur.Command#execute()
-	**/
+	 * méthode qui éxécute la commande de sauvegarder  un fichier
+	 **/
 	@Override
 	public void execute() {
 		commandGestion.save();

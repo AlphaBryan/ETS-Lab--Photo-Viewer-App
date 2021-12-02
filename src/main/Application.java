@@ -3,23 +3,23 @@ package main;
 import controlleur.*;
 import vue.MainFrame;
 
+/**
+ * classe qui représente l'application
+ */
 public class Application {
 
 	public static int x;
 	public static int y;
-	/*
-	 * TODO - Finir le lab Jeudi
-	 * 1 : Régler les tailles de l'image 
-	 * 2 : Patron Observateur
-	 * 3 : finir Commande 
-	 * 4 : Boire Vodka	
-	 * 
-	 **/
-	
-	
-	
-	private static MainFrame mainFrame ; 
 
+	
+	
+	
+	private static MainFrame mainFrame ;
+
+	/**
+	 * méthode main qui permet d'exécuter l'application
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		AppInfo() ;
 		run( );

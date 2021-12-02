@@ -12,8 +12,14 @@ import java.io.IOException;
 import java.util.Hashtable;
 
 /**
+ * Classe qui permet de mettre les informations des perspectives de la dernière image sauvegardée dans un fichier xml
  * reference : https://stackoverflow.com/questions/7373567/how-to-read-and-write-xml-files
- *
+ *attributs :
+ * path : représentant le chemin absolu de l'image statique
+ * sizeX : représentant la taille du zoom selon l'axe des x
+ * sizeY : représentant la taille du zoom selon l'axe des y
+ * positionX : représentant l'abcisse de l'image translatée
+ * positionY : représentant la coordonnée de l'image translatée
  */
 public class XmlFile {
     private String path = null;
@@ -22,7 +28,11 @@ public class XmlFile {
     private String positionX = null ;
     private String positionY = null ;
 
-
+    /**
+     * méthode qui permet de lire les informations du fichier XML en appelant la méthode getTextValue
+     * @param xml : représentant le chemin absolu du fichier XML
+     * @return un hashtable qui contient toutes les informations de l'image et de ses perspectives
+     */
     public   Hashtable<String,String> readXML(String xml) {
 
         Hashtable<String,String> param=new Hashtable<String,String>();
@@ -76,6 +86,12 @@ public class XmlFile {
 
         return null;
     }
+
+    /**
+     * méthode qui permet de sauvegarder les informations  des perspectives dans le fichier XML
+     * @param xml : représentant le chemin absolu du fichier XML
+     *
+     */
     public void saveToXML(String xml) {
         Document dom;
         Element e = null;
@@ -133,6 +149,13 @@ public class XmlFile {
         }
     }
 
+    /**
+     * méthode qui permet d'avoir les informations du fichierXml en chaine de caractères
+     * @param def : attribut de la classe XMLFILE qui permet d'en faire la manipulation
+     * @param doc : document XML qui est lu
+     * @param tag : les balises qui représentent les informations
+     * @return
+     */
     private String getTextValue(String def, Element doc, String tag) {
         String value = def;
         NodeList nl;
@@ -143,6 +166,10 @@ public class XmlFile {
         return value;
     }
 
+    /**
+     *
+     * getters et setters des attributs de la classe
+     */
     public String getPath() {
         return path;
     }

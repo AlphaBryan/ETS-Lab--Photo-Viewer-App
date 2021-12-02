@@ -1,17 +1,23 @@
 package controlleur;
-
+/**
+ * classe qui implémente l'action de zoomer ou dézoomer  une image
+ * et hérite de la classe command
+ * attribut : inOrOut permet de la vérification si c'est pour zoomer ou dézoomer
+ */
 public class Zoom extends Command {
 
     private String inOrOut ="";
 
-
+    /**
+     * Construteur de la classe Undo.java
+     */
     public Zoom() {
         super();
 
     }
 
     /**
-     @see controlleur.Command#execute()
+     * méthode pour exécuter le zoomage ou le dézoomage d'une image
      **/
     @Override
     public void execute() {

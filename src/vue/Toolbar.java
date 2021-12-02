@@ -21,8 +21,15 @@ import javax.swing.filechooser.FileSystemView;
 
 import main.Application;
 
+/**
+ * classe représentant la barre de menu située en haut de l'application
+ * qui hérite de la classe JMenuBar
+ *
+ */
 public class Toolbar extends JMenuBar {
-
+	/**
+	 * attributs qui permets d'avoir les noms des éléments des menus
+	 */
 	private static final long serialVersionUID = 1L;
 	private static final String TOOLBAR_TITRE_FICHIER = "Fichier";
 	private static final String TOOLBAR_NOUVELLEIMAGE = "Nouvelle Image";
@@ -32,7 +39,9 @@ public class Toolbar extends JMenuBar {
 	private static final String TOOLBAR_UNDO = "Undo";
 	private static final String TOOLBAR_REDO = "Redo";
 
-
+	/**
+	 * attributs qui définissent éléments  du menu
+	 */
 	private JMenu fichier = new JMenu(TOOLBAR_TITRE_FICHIER);
 	private JMenuItem nouvelleImage = new JMenuItem(TOOLBAR_NOUVELLEIMAGE);
 	private static JMenuItem sauvegarder = new JMenuItem(TOOLBAR_SAUVEGARDER);
@@ -43,7 +52,9 @@ public class Toolbar extends JMenuBar {
 	private static JMenuItem undo = new JMenuItem(TOOLBAR_UNDO);
 	private static JMenuItem redo = new JMenuItem(TOOLBAR_REDO);
 
-
+	/**
+	 * méthode qui permet d'ajouter les imtes  dans la barre de menu
+	 */
 	public Toolbar() {
 		fichier.add(nouvelleImage);
 		fichier.add(charger) ;
@@ -57,6 +68,10 @@ public class Toolbar extends JMenuBar {
 
 
 	}
+
+	/**
+	 * méthode qui permet de configurer le sous menu fichier et d'implémenter la commande nouvelleImage
+	 */
 
 	private void ajouterMenuFichier() {
 
@@ -84,7 +99,11 @@ public class Toolbar extends JMenuBar {
 
 
 	}
-	
+
+	/**
+	 * Méthode pour charger l'image statique
+	 * @param path :le chemin absolu de l'image
+	 */
 	private void InitPanelsImages(String path) {
 		System.out.println(" # Loading Image : " + path);
 		Application.getMainFrame().setImgPath(path);
@@ -92,12 +111,20 @@ public class Toolbar extends JMenuBar {
 
 	}
 
+	/**
+	 * méthode pour initer la commande undo
+	 * @param command
+	 */
 	public static void setAction(Undo command) {
 		undo.addActionListener((ActionEvent e) -> {
 			command.execute() ; 			
 		});
 	}
 
+	/**
+	 * méthode pour initier la commande redo
+	 * @param command
+	 */
 	public static void setAction(Redo command) {
 		redo.addActionListener((ActionEvent e) -> {
 			command.execute() ; 			
@@ -105,7 +132,10 @@ public class Toolbar extends JMenuBar {
 	}
 
 
-
+	/**
+	 * méthode pour initier la commande charger
+	 * @param command
+	 */
 	public static void setAction(Charge command){
 		charger.addActionListener((ActionEvent e) -> {
 
@@ -113,6 +143,11 @@ public class Toolbar extends JMenuBar {
 
 		});
 	}
+
+	/**
+	 * méthode pour initier la commande sauvegarder
+	 * @param command
+	 */
 	public static void setAction(Save command){
 		sauvegarder.addActionListener((ActionEvent e) -> {
 			command.execute();
