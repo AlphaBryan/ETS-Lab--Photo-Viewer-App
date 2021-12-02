@@ -1,6 +1,4 @@
 package main;
-
-import controlleur.*;
 import vue.MainFrame;
 
 /**
@@ -10,9 +8,6 @@ public class Application {
 
 	public static int x;
 	public static int y;
-
-	
-	
 	
 	private static MainFrame mainFrame ;
 

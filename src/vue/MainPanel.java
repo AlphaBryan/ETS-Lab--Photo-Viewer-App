@@ -1,14 +1,7 @@
 package vue;
 
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
-import java.beans.PropertyChangeEvent;
-
 import javax.swing.*;
-
-import model.Images;
-import model.Perspective;
 
 public class MainPanel extends JPanel{
 	

@@ -1,39 +1,14 @@
 package controlleur;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.image.BufferedImage;
-import java.awt.image.ImageObserver;
-import java.awt.image.ImageProducer;
-import java.awt.image.RenderedImage;
-import java.io.*;
-import java.nio.Buffer;
 import java.util.*;
-
 import Tools.*;
-
-import javax.xml.parsers.*;
-import javax.xml.transform.*;
-import javax.xml.transform.dom.*;
-import javax.xml.transform.stream.*;
-
 import model.Images;
-import org.xml.sax.*;
-import org.w3c.dom.*;
-
-
-import main.Application;
 import model.Perspective;
-import vue.MainFrame;
-import vue.MainPanel;
-import vue.PanelTranslation;
-import vue.PanelZoom;
 
 
-import javax.imageio.ImageIO;
-import javax.swing.*;
-import javax.swing.filechooser.FileNameExtensionFilter;
-import javax.swing.filechooser.FileSystemView;
+
+
 
 /**
  * classe qui représente le gestionnaire de commandes
@@ -49,16 +24,11 @@ public class CommandGestion {
 
 	
 	private static CommandGestion commandGestion ;
-
 	private Stack<Perspective> historic = new Stack<Perspective>() ;
 	private Stack<Perspective> future = new Stack<Perspective>() ;
-
-
 	private Perspective perspectiveStatic =new Perspective();
 	private Perspective perspectiveTranslation =new Perspective();
 	private Perspective perspectiveZoom =new Perspective();
-
-
 
 	/**
 	 * Constructeur de notre gestionnaire de commande
@@ -127,11 +97,8 @@ public class CommandGestion {
 	 * @return void
 	 */
 	public void redo() {
-		System.out.println("ggg");
 		if (future.size()>0) {
-			System.out.println("not empty");
 			Perspective snapshot = future.pop();
-			System.out.println("s :"+snapshot);
 			perspectiveZoom.setSizeInPerspective(snapshot.getSizeInPerspective());
 			perspectiveTranslation.setPositionInPerspective(snapshot.getPositionInPerspective());
 			perspectiveZoom.notifyObservers();
@@ -152,17 +119,13 @@ public class CommandGestion {
 		perspectiveZoom.setImagePerspective(image);
 		Point lastPosition = new Point(Integer.parseInt(info.get("positionX")),Integer.parseInt(info.get("positionY")));
 		Point lastSize = new Point(Integer.parseInt(info.get("sizeX")),Integer.parseInt(info.get("sizeY"))) ;
-
-		System.out.println("Last Position : "+ lastPosition) ;
-		System.out.println("Last Size : "+ lastSize);
 		perspectiveZoom.setSizeInPerspective(lastSize);
 		perspectiveTranslation.setPositionInPerspective(lastPosition);
         perspectiveStatic.notifyObservers();
 		perspectiveZoom.notifyObservers();
 		perspectiveTranslation.notifyObservers();
-
-
 	}
+	
 	/**
 	 * Methode pour executer la commande Zoom
 	 **/

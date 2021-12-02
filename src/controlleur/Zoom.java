@@ -1,8 +1,8 @@
 package controlleur;
 /**
- * classe qui implémente l'action de zoomer ou dézoomer  une image
- * et hérite de la classe command
- * attribut : inOrOut permet de la vérification si c'est pour zoomer ou dézoomer
+ * classe qui implemente l'action de zoomer ou dezoomer  une image
+ * et herite de la classe command
+ * attribut : inOrOut permet de la verification si c'est pour zoomer ou dezoomer
  */
 public class Zoom extends Command {
 
@@ -17,7 +17,7 @@ public class Zoom extends Command {
     }
 
     /**
-     * méthode pour exécuter le zoomage ou le dézoomage d'une image
+     * methode pour executer le zoomage ou le dezoomage d'une image
      **/
     @Override
     public void execute() {

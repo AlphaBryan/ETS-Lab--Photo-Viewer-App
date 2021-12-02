@@ -12,14 +12,14 @@ import java.io.IOException;
 import java.util.Hashtable;
 
 /**
- * Classe qui permet de mettre les informations des perspectives de la dernière image sauvegardée dans un fichier xml
+ * Classe qui permet de mettre les informations des perspectives de la derniere image sauvegardee dans un fichier xml
  * reference : https://stackoverflow.com/questions/7373567/how-to-read-and-write-xml-files
  *attributs :
- * path : représentant le chemin absolu de l'image statique
- * sizeX : représentant la taille du zoom selon l'axe des x
- * sizeY : représentant la taille du zoom selon l'axe des y
- * positionX : représentant l'abcisse de l'image translatée
- * positionY : représentant la coordonnée de l'image translatée
+ * path : representant le chemin absolu de l'image statique
+ * sizeX : representant la taille du zoom selon l'axe des x
+ * sizeY : representant la taille du zoom selon l'axe des y
+ * positionX : representant l'abcisse de l'image translatee
+ * positionY : representant la coordonnee de l'image translatee
  */
 public class XmlFile {
     private String path = null;
@@ -29,8 +29,8 @@ public class XmlFile {
     private String positionY = null ;
 
     /**
-     * méthode qui permet de lire les informations du fichier XML en appelant la méthode getTextValue
-     * @param xml : représentant le chemin absolu du fichier XML
+     * methode qui permet de lire les informations du fichier XML en appelant la methode getTextValue
+     * @param xml : representant le chemin absolu du fichier XML
      * @return un hashtable qui contient toutes les informations de l'image et de ses perspectives
      */
     public   Hashtable<String,String> readXML(String xml) {
@@ -88,8 +88,8 @@ public class XmlFile {
     }
 
     /**
-     * méthode qui permet de sauvegarder les informations  des perspectives dans le fichier XML
-     * @param xml : représentant le chemin absolu du fichier XML
+     * methode qui permet de sauvegarder les informations  des perspectives dans le fichier XML
+     * @param xml : representant le chemin absolu du fichier XML
      *
      */
     public void saveToXML(String xml) {
@@ -150,10 +150,10 @@ public class XmlFile {
     }
 
     /**
-     * méthode qui permet d'avoir les informations du fichierXml en chaine de caractères
+     * methode qui permet d'avoir les informations du fichierXml en chaine de caracteres
      * @param def : attribut de la classe XMLFILE qui permet d'en faire la manipulation
      * @param doc : document XML qui est lu
-     * @param tag : les balises qui représentent les informations
+     * @param tag : les balises qui representent les informations
      * @return
      */
     private String getTextValue(String def, Element doc, String tag) {

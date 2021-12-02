@@ -6,8 +6,8 @@ import main.Application;
 import java.io.IOException;
 
 /**
- * classe qui implémente l'action de charger un fichier
- * et hérite de la classe command
+ * classe qui implemente l'action de charger un fichier
+ * et herite de la classe command
  */
 
 public class Charge  extends Command{
@@ -21,13 +21,11 @@ public class Charge  extends Command{
 	}
 	
 	/**
-	* méthode qui éxécute la commande de charger un fichier
+	* methode qui execute la commande de charger un fichier
 	**/
 	@Override
 	public void execute() {
 		commandGestion.charge();
-		//savePerspectiveZoom(commandGestion.getPerspectiveZoom());
-		//savePerspectiveTranslation(commandGestion.getPerspectiveTranslation());
 		commandGestion.push(this);
 	}
 

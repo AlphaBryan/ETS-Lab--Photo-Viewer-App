@@ -1,12 +1,12 @@
 package controlleur;
 /**
- * classe qui implémente l'action de redo une action
- * et hérite de la classe command
+ * classe qui implemente l'action de redo une action
+ * et herite de la classe command
  */
 public class Redo extends  Command {
 
 	/**
-	 * constructeur de la classe Redo  qui appel le constructeur de la classe mère
+	 * constructeur de la classe Redo  qui appel le constructeur de la classe mere
 	 */
 	@Override
 	public void execute() {

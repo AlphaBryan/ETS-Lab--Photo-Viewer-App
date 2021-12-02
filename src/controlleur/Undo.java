@@ -1,7 +1,7 @@
 package controlleur;
 /**
- * classe qui implémente la commande  de défaire une action
- * et hérite de la classe command
+ * classe qui implemente la commande  de defaire une action
+ * et herite de la classe command
  */
 public class Undo extends Command {
 
@@ -16,7 +16,7 @@ public class Undo extends Command {
 	}
 
 	/**
-	 * méthode qui éxécute la commande de défaire une action
+	 * methode qui execute la commande de defaire une action
 	 **/
 	@Override
 	public void execute() {

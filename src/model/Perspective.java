@@ -8,12 +8,12 @@ import java.util.Observable;
 import java.util.Observer;
 
 /**
- * Classe perspective représentant les perspectives (translation et zoom) de l'image
+ * Classe perspective representant les perspectives (translation et zoom) de l'image
  * Attributs  :
- * image : représentant la perspective
+ * image : representant la perspective
  * sizeInPerspective : pour avoir le zoom de l'image
- * positionInPerspective : pour avoir la position de l'image translatée
- * observer : représentant l'observateur qui met à jour les perspectives
+ * positionInPerspective : pour avoir la position de l'image translatee
+ * observer : representant l'observateur qui met à jour les perspectives
  */
 public class Perspective extends Observable   implements Serializable {
 
@@ -27,7 +27,7 @@ public class Perspective extends Observable   implements Serializable {
 	 * constructeur de la classe perspective
 	 */
 	public Perspective(){
-		this.sizeInPerspective = new Point(-1,-1) ;
+		this.sizeInPerspective = new Point(200,200) ;
 		this.positionInPerspective = new Point(-1,-1) ;
 	}
 
@@ -43,12 +43,7 @@ public class Perspective extends Observable   implements Serializable {
 
 
 	public Point getSizeInPerspective() {
-		if(sizeInPerspective == new Point(-1,-1) ) {
-			return sizeInPerspective ; 
-		}
-		else {
-			return new Point(200,200) ; 
-		}
+		return sizeInPerspective ; 
 	}
 
 
@@ -67,7 +62,7 @@ public class Perspective extends Observable   implements Serializable {
 	}
 
 	/**
-	 * méthode qui permet d'ajouter un observer qui est transmis en paramètres
+	 * methode qui permet d'ajouter un observer qui est transmis en parametres
 	 * @param o
 	 */
 	@Override
@@ -76,7 +71,7 @@ public class Perspective extends Observable   implements Serializable {
 	}
 
 	/**
-	 * méthode qui permet de faire la mise à jour de l'affichage
+	 * methode qui permet de faire la mise à jour de l'affichage
 	 */
 	@Override
 	public void notifyObservers(){
@@ -84,7 +79,7 @@ public class Perspective extends Observable   implements Serializable {
 	}
 
 	/**
-	 * permet d'établir la position de la perspective de translation et la taille de la perspective de zoom
+	 * permet d'etablir la position de la perspective de translation et la taille de la perspective de zoom
 	 */
 	public void initPositionAndSize() {
 		this.sizeInPerspective = new Point(200,200) ;
@@ -92,7 +87,7 @@ public class Perspective extends Observable   implements Serializable {
 	}
 
 	/**
-	*faire l'affichage en chaîne de caractères d'un objet perspective
+	*faire l'affichage en chaîne de caracteres d'un objet perspective
 	**/
 	@Override
 	public String toString() {

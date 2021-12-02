@@ -3,23 +3,16 @@ package vue;
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
-import controlleur.Charge;
 import controlleur.CommandGestion;
 import controlleur.Translate;
 import model.Images;
-import model.Perspective;
-
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.util.Observable;
 import java.util.Observer;
-import java.util.TimerTask;
-import java.util.Timer;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+
 
 
 public class PanelTranslation extends JPanel implements Observer {

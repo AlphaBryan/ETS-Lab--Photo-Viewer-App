@@ -1,7 +1,6 @@
 package vue;
 
 import controlleur.*;
-
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 

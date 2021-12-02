@@ -4,19 +4,13 @@ import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
-
 import controlleur.CommandGestion;
-import main.Application;
-
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Color;
 import java.util.Observable;
 import java.util.Observer;
-
-
 import model.Images;
-import model.Perspective;
 
 public class PanelStatic extends JPanel implements Observer {
 
@@ -59,8 +53,6 @@ public class PanelStatic extends JPanel implements Observer {
 						commandGestion.getPerspectiveStatic().getSizeInPerspective().y, this);
 			}
 		}
-
-
 	}
 
 	/** Getter de l'attribut : Images

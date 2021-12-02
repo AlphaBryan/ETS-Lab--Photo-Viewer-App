@@ -4,31 +4,25 @@ import controlleur.Charge;
 import controlleur.Redo;
 import controlleur.Save;
 import controlleur.Undo;
-
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.File;
-import java.io.IOException;
-import java.util.Scanner;
-
 import javax.swing.JFileChooser;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.event.MenuKeyEvent;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
 
 import main.Application;
 
 /**
- * classe représentant la barre de menu située en haut de l'application
- * qui hérite de la classe JMenuBar
+ * classe representant la barre de menu situee en haut de l'application
+ * qui herite de la classe JMenuBar
  *
  */
 public class Toolbar extends JMenuBar {
 	/**
-	 * attributs qui permets d'avoir les noms des éléments des menus
+	 * attributs qui permets d'avoir les noms des elements des menus
 	 */
 	private static final long serialVersionUID = 1L;
 	private static final String TOOLBAR_TITRE_FICHIER = "Fichier";
@@ -40,7 +34,7 @@ public class Toolbar extends JMenuBar {
 	private static final String TOOLBAR_REDO = "Redo";
 
 	/**
-	 * attributs qui définissent éléments  du menu
+	 * attributs qui definissent elements  du menu
 	 */
 	private JMenu fichier = new JMenu(TOOLBAR_TITRE_FICHIER);
 	private JMenuItem nouvelleImage = new JMenuItem(TOOLBAR_NOUVELLEIMAGE);
@@ -53,7 +47,7 @@ public class Toolbar extends JMenuBar {
 	private static JMenuItem redo = new JMenuItem(TOOLBAR_REDO);
 
 	/**
-	 * méthode qui permet d'ajouter les imtes  dans la barre de menu
+	 * methode qui permet d'ajouter les imtes  dans la barre de menu
 	 */
 	public Toolbar() {
 		fichier.add(nouvelleImage);
@@ -65,12 +59,10 @@ public class Toolbar extends JMenuBar {
 		add(fichier);
 		add(command);
 		ajouterMenuFichier();
-
-
 	}
 
 	/**
-	 * méthode qui permet de configurer le sous menu fichier et d'implémenter la commande nouvelleImage
+	 * methode qui permet de configurer le sous menu fichier et d'implementer la commande nouvelleImage
 	 */
 
 	private void ajouterMenuFichier() {
@@ -80,18 +72,11 @@ public class Toolbar extends JMenuBar {
 			JFileChooser fileChooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
 			fileChooser.setDialogTitle("Selectionnez une  image  : ");
 			fileChooser.setAcceptAllFileFilterUsed(false);
-			// Creer un filtre
 			FileNameExtensionFilter filtre = new FileNameExtensionFilter(".png", "png");
 			fileChooser.addChoosableFileFilter(filtre);
-
 			int returnValue = fileChooser.showOpenDialog(null);
-
-			if (returnValue == JFileChooser.APPROVE_OPTION) {
-				
-				
+			if (returnValue == JFileChooser.APPROVE_OPTION) {				
 				File selectedFile = fileChooser.getSelectedFile();
-
-				
 				InitPanelsImages(selectedFile.getAbsolutePath()) ;
 			}
 		});
@@ -101,7 +86,7 @@ public class Toolbar extends JMenuBar {
 	}
 
 	/**
-	 * Méthode pour charger l'image statique
+	 * Methode pour charger l'image statique
 	 * @param path :le chemin absolu de l'image
 	 */
 	private void InitPanelsImages(String path) {
@@ -112,7 +97,7 @@ public class Toolbar extends JMenuBar {
 	}
 
 	/**
-	 * méthode pour initer la commande undo
+	 * methode pour initer la commande undo
 	 * @param command
 	 */
 	public static void setAction(Undo command) {
@@ -122,7 +107,7 @@ public class Toolbar extends JMenuBar {
 	}
 
 	/**
-	 * méthode pour initier la commande redo
+	 * methode pour initier la commande redo
 	 * @param command
 	 */
 	public static void setAction(Redo command) {
@@ -133,7 +118,7 @@ public class Toolbar extends JMenuBar {
 
 
 	/**
-	 * méthode pour initier la commande charger
+	 * methode pour initier la commande charger
 	 * @param command
 	 */
 	public static void setAction(Charge command){
@@ -145,7 +130,7 @@ public class Toolbar extends JMenuBar {
 	}
 
 	/**
-	 * méthode pour initier la commande sauvegarder
+	 * methode pour initier la commande sauvegarder
 	 * @param command
 	 */
 	public static void setAction(Save command){
