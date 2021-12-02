@@ -101,8 +101,7 @@ public class CommandGestion {
 		if (historic.size()>0) {
 			Perspective snapshot = pop(); 
 			pushRedo() ; 
-			perspectiveZoom.setSizeInPerspective(snapshot.getSizeInPerspective()); //Probleme redo
-		//	perspectiveZoom.setSizeInPerspective(new Point(100,100));
+			perspectiveZoom.setSizeInPerspective(snapshot.getSizeInPerspective()); 
 			perspectiveTranslation.setPositionInPerspective(snapshot.getPositionInPerspective());		
 			perspectiveZoom.notifyObservers();
 			perspectiveTranslation.notifyObservers();

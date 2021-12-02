@@ -16,8 +16,6 @@ public class MainFrame extends JFrame  {
 	private MainPanel panneauPrincipal ;
 	private static Toolbar toolbar = new Toolbar();
 
-
-
 	public MainFrame() {
 		panneauPrincipal = new MainPanel();
 		toolbar = new Toolbar();
@@ -25,20 +23,19 @@ public class MainFrame extends JFrame  {
 		setUpCommandPanels() ;
 		add(panneauPrincipal);
 		add(toolbar, BorderLayout.NORTH);
-		// Faire en sorte que le X de la fenetre ferme la fenï¿½tre
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setTitle(TITRE_FENETRE);
 		setSize(DIMENSION);
-		// Rendre la fenetre visible
 		setVisible(true);
-		// Mettre la fenetre au centre de l'ecran
 		setLocationRelativeTo(null);
-		// Empecher la redimension de la fenetre
 		setResizable(false);
 	}
 
 
 
+	/**
+	 * Methode permettant : d'associer chacun des boutons de la Toolbar à sa commande respective
+	 */
 	public void setUpCommandToolbar(){
 		Toolbar.setAction(new Save());
 		Toolbar.setAction(new Charge());
@@ -47,6 +44,9 @@ public class MainFrame extends JFrame  {
 	}
 
 	
+	/**
+	 * Methode permettant : d'associer respectivement une commande a tous les sous Panel de notre MainPanel
+	 */
 	public void setUpCommandPanels(){
 		panneauPrincipal.getpTranslation().setAction(new Translate());
 		panneauPrincipal.getpZoom().setAction(new Zoom());
