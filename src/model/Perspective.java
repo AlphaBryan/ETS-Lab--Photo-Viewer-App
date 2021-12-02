@@ -43,7 +43,12 @@ public class Perspective extends Observable   implements Serializable {
 
 
 	public Point getSizeInPerspective() {
-		return sizeInPerspective;
+		if(sizeInPerspective == new Point(-1,-1) ) {
+			return sizeInPerspective ; 
+		}
+		else {
+			return new Point(200,200) ; 
+		}
 	}
 
 
