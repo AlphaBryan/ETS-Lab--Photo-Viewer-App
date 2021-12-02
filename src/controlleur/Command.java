@@ -9,14 +9,9 @@ import java.awt.Point;
 import java.io.IOException;
 
 public abstract class  Command {
+
 	private boolean enable ;
 
-	private int oldTX ;
-	private int oldTY ;
-
-	private int oldZX ;
-	private int oldZY ;
-	
 	protected Perspective oldPerspective = new Perspective() ; 
 
 	protected CommandGestion commandGestion = CommandGestion.getInstance();
@@ -56,36 +51,7 @@ public abstract class  Command {
 		this.enable = false;
 	}
 
-	public void setOldTX(int oldX) {
-		this.oldTX = oldX;
-	}
-	public void setOldTY(int oldY) {
-		this.oldTY = oldY;
-	}
 
-	public int getOldTX() {
-		return oldTX;
-	}
-
-	public int getOldTY() {
-		return oldTY;
-	}
-
-	public void setOldZX(int oldZX) {
-		this.oldZX = oldZX;
-	}
-
-	public void setOldZY(int oldZY) {
-		this.oldZY = oldZY;
-	}
-
-	public int getOldZX() {
-		return oldZX;
-	}
-
-	public int getOldZY() {
-		return oldZY;
-	}
 	
 	/**
 	 * Methode permettant : de

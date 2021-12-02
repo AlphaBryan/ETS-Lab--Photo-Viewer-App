@@ -6,6 +6,7 @@ import controlleur.Save;
 import controlleur.Undo;
 
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
@@ -36,6 +37,7 @@ public class Toolbar extends JMenuBar {
 	private JMenuItem nouvelleImage = new JMenuItem(TOOLBAR_NOUVELLEIMAGE);
 	private static JMenuItem sauvegarder = new JMenuItem(TOOLBAR_SAUVEGARDER);
 	private static JMenuItem charger = new JMenuItem(TOOLBAR_CHARGER_FICHIER);
+
 
 	private JMenu command =  new JMenu(TOOLBAR_COMMAND);
 	private static JMenuItem undo = new JMenuItem(TOOLBAR_UNDO);
@@ -101,6 +103,8 @@ public class Toolbar extends JMenuBar {
 			command.execute() ; 			
 		});
 	}
+
+
 
 	public static void setAction(Charge command){
 		charger.addActionListener((ActionEvent e) -> {

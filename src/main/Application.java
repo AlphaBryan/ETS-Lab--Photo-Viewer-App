@@ -54,12 +54,6 @@ public class Application {
 		return mainFrame;
 	}
 
-	/** Setter de l'attribtut : this.mainFrame
-	 * @param mainFrame : Nouvelle valeur de l'attribut this.mainFrame 
-	 */
-	public static void setMainFrame(MainFrame mainFrame) {
-		Application.mainFrame = mainFrame;
-	}
 
 
 	

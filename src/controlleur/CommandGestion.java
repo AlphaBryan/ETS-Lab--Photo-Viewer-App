@@ -82,7 +82,6 @@ public class CommandGestion {
 	public void pushRedo() {
 		Perspective futureRedo = new Perspective() ; 
 		futureRedo.setSizeInPerspective(perspectiveZoom.getSizeInPerspective()); //Problem redo
-//		futureRedo.setSizeInPerspective(new Point(100,100));
 		futureRedo.setPositionInPerspective(perspectiveTranslation.getPositionInPerspective());
 		future.add(futureRedo) ;    
 		System.out.println("f :" + future);
